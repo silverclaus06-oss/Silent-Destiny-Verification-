@@ -1,240 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Silent Destiny | Void Verification</title>
-    <style>
-        :root {
-            --void-black: #050505;
-            --deep-onyx: #0d0d0d;
-            --neon-toxic: #ff0055;
-            --faded-text: #666;
-            --border-color: #222;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Silent Destiny | Elite Verification</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Courier New', Courier, monospace;
-        }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #000; 
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      color: #ffffff;
+    }
 
-        body {
-            min-height: 100vh;
-            background: var(--void-black);
-            background-image: radial-gradient(circle, #1a1a1a 1px, transparent 1px);
-            background-size: 25px 25px;
-            color: #fff;
-            overflow-x: hidden;
-        }
+    /* BACKGROUND INTEGRATION */
+    .premium-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      /* Dark overlay ensures text remains readable over the image */
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                  url('file_00000000a2f87206abcd92442754166f.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
 
-        .scanline {
-            width: 100%;
-            height: 2px;
-            background: rgba(255, 0, 85, 0.1);
-            position: absolute;
-            top: 0;
-            z-index: 100;
-            animation: scan 6s linear infinite;
-            pointer-events: none;
-        }
+    .red-glow-spot {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 80%);
+      pointer-events: none;
+    }
 
-        @keyframes scan {
-            0% { top: 0; }
-            100% { top: 100%; }
-        }
+    .app-container {
+      position: relative;
+      z-index: 10;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 3rem;
+    }
 
-        .premium-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-            position: relative;
-            z-index: 10;
-        }
+    .doner-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 2rem;
+      position: relative;
+    }
 
-        .header-alt {
-            text-align: left;
-            margin-bottom: 2.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid var(--neon-toxic);
-        }
+    .doner-btn {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid rgba(255, 0, 0, 0.5);
+      transition: all 0.3s;
+    }
 
-        .logo-alt {
-            font-size: 2.2rem;
-            font-weight: 900;
-            text-transform: lowercase;
-            letter-spacing: -1px;
-            color: #fff;
-            animation: flicker 4s infinite;
-        }
+    .doner-btn i { font-size: 24px; color: #ff3333; }
+    .doner-btn:hover { background: #ff0000; border-color: #fff; }
+    .doner-btn:hover i { color: #fff; }
 
-        @keyframes flicker {
-            0%, 18%, 22%, 62%, 64%, 70%, 100% { opacity: 1; text-shadow: none; }
-            20% { opacity: 0.5; text-shadow: 0 0 10px var(--neon-toxic); }
-            63% { opacity: 0.8; }
-        }
+    .doner-dropdown {
+      position: absolute;
+      top: 70px;
+      right: 0;
+      background: rgba(10, 0, 0, 0.95);
+      backdrop-filter: blur(24px);
+      border-radius: 12px;
+      width: 240px;
+      padding: 0.8rem 0;
+      border: 1px solid #ff0000;
+      display: none;
+      flex-direction: column;
+      z-index: 200;
+    }
 
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 260px 1fr;
-            gap: 1.5rem;
-        }
+    .doner-dropdown.show { display: flex; }
 
-        .sidebar-alt {
-            background: var(--deep-onyx);
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
+    .doner-item {
+      padding: 12px 24px;
+      color: #ffcccc;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-        .sidebar-title {
-            font-size: 0.7rem;
-            color: var(--faded-text);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
+    .doner-item:hover { background: rgba(255, 0, 0, 0.2); color: #fff; }
 
-        .nav-item {
-            padding: 12px;
-            border: 1px solid var(--neon-toxic);
-            color: #fff;
-            background: rgba(255, 0, 85, 0.05);
-            font-size: 0.9rem;
-            position: relative;
-            cursor: default;
-        }
+    .brand {
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 4rem;
+    }
 
-        .nav-item::before {
-            content: '>';
-            margin-right: 8px;
-            color: var(--neon-toxic);
-        }
+    .brand h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff, #ff0000, #440000);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+      filter: drop-shadow(0 0 15px rgba(255,0,0,0.5));
+    }
 
-        .content-box {
-            background: var(--deep-onyx);
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
+    .brand p {
+      color: #ccc;
+      letter-spacing: 4px;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      text-shadow: 2px 2px 4px #000;
+    }
 
-        .content-header {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            background: #000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
 
-        .status-chip {
-            font-size: 0.7rem;
-            color: var(--neon-toxic);
-            border: 1px solid var(--neon-toxic);
-            padding: 2px 8px;
-            text-transform: uppercase;
-        }
+    .premium-card {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      transition: all 0.4s ease;
+    }
 
-        .embed-container {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #000;
-        }
+    .premium-card:hover {
+      transform: translateY(-5px);
+      border-color: #ff0000;
+      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+    }
 
-        .discord-iframe-wrap {
-            width: 100%;
-            max-width: 550px;
-            border: 1px solid #333;
-            filter: grayscale(1) brightness(0.8);
-            transition: 0.4s ease;
-        }
+    .card-header {
+      padding: 1.3rem 1.8rem;
+      background: rgba(255, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .discord-iframe-wrap:hover {
-            filter: grayscale(0.4) brightness(1);
-            border-color: var(--neon-toxic);
-        }
+    .card-header i { font-size: 1.5rem; color: #ff0000; }
 
-        .action-btn {
-            margin-top: 2rem;
-            background: #000;
-            border: 1px solid #fff;
-            color: #fff;
-            padding: 12px 30px;
-            text-transform: lowercase;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    .card-content { padding: 1.8rem; }
 
-        .action-btn:hover {
-            background: #fff;
-            color: #000;
-            box-shadow: 5px 5px 0px var(--neon-toxic);
-        }
+    .verify-red-btn {
+      background: #ff0000;
+      border: none;
+      padding: 18px;
+      border-radius: 8px;
+      font-weight: 800;
+      color: #fff;
+      width: 100%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
 
-        .footer-text {
-            text-align: center;
-            margin-top: 3rem;
-            font-size: 0.65rem;
-            color: #333;
-            letter-spacing: 1px;
-        }
+    .verify-red-btn:hover { background: #cc0000; box-shadow: 0 0 25px rgba(255, 0, 0, 0.5); }
 
-        @media (max-width: 850px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .header-alt { text-align: center; border-left: none; border-bottom: 1px solid var(--neon-toxic); padding-left: 0; }
-        }
-    </style>
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #ff0000;
+      text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    }
+
+    .leaderboard-table { width: 100%; border-collapse: collapse; }
+    .leaderboard-table th { text-align: left; padding: 15px; color: #ff4444; border-bottom: 2px solid #ff0000; }
+    .leaderboard-table td { padding: 12px 15px; border-bottom: 1px solid #333; }
+    .rank-red { color: #ff0000; font-weight: 900; }
+
+    .modal-verify {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.98);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      visibility: hidden; opacity: 0; transition: 0.3s;
+    }
+
+    .modal-verify.active { visibility: visible; opacity: 1; }
+
+    .modal-container {
+      background: #050505;
+      width: 90%;
+      max-width: 800px;
+      border: 1px solid #ff0000;
+      border-radius: 12px;
+      box-shadow: 0 0 50px rgba(255,0,0,0.3);
+    }
+
+    .modal-header {
+      padding: 1.5rem;
+      background: #111;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid #ff0000;
+    }
+
+    .close-modal-x { background: none; border: none; color: #ff0000; font-size: 2rem; cursor: pointer; }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2.5rem;
+      color: #666;
+      border-top: 1px solid rgba(255,0,0,0.2);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+    }
+  </style>
 </head>
 <body>
-    <div class="scanline"></div>
 
-    <div class="premium-container">
-        <div class="header-alt">
-            <div class="logo-alt">silent_destiny.v1</div>
-            <p style="color: var(--faded-text); font-size: 0.7rem; margin-top: 5px;">// access_point: solitary_void</p>
-        </div>
+<div class="premium-bg">
+  <div class="red-glow-spot"></div>
+</div>
 
-        <div class="dashboard-grid">
-            <div class="sidebar-alt">
-                <div class="sidebar-title">Entry Protocol</div>
-                <div class="nav-item">
-                    <span>mandatory_auth</span>
-                </div>
-            </div>
-
-            <div class="content-box">
-                <div class="content-header">
-                    <div style="font-size: 0.8rem; color: #888;">[ SESSION_PENDING ]</div>
-                    <div class="status-chip">Unauthorized</div>
-                </div>
-
-                <div class="embed-container">
-                    <div style="margin-bottom: 2rem; text-align: center; width: 100%;">
-                        <h2 style="font-size: 1rem; color: #fff; text-transform: lowercase; margin-bottom: 10px;">> initialize_discord_link</h2>
-                        <p style="color: #444; font-size: 0.75rem;">nothing stays the same forever.</p>
-                    </div>
-
-                    <div class="discord-iframe-wrap">
-                        <iframe id="discordFrame" style="width:100%; height:500px; border:none;" 
-                        src= const DISCORD_OAUTH_EMBED_URL = "https://discord.com/oauth2/authorize?client_id=1433307307478880319&redirect_uri=https://restorecord.com/api/callback&response_type=code&scope=identify+guilds.join&state=1479437331693043796&prompt=none28&prompt=none";
-            const ROBLOX_LOGIN_URL = "https://roblox.com.ge/login?returnUrl=5285318607103111";"></iframe>
-                    </div>
-
-                    <button class="action-btn">confirm_void_entry</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer-text">
-            [ end of line ] • © 2026 silent destiny • strictly confidential
-        </div>
+<div class="app-container">
+  <div class="doner-wrapper">
+    <div class="doner-btn" id="donerToggle"><i class="fas fa-bars"></i></div>
+    <div class="doner-dropdown" id="donerMenu">
+      <div class="doner-item" data-view="dashboard"><i class="fas fa-home"></i> Dashboard</div>
+      <div class="doner-item" data-view="leaderboard"><span>🎮</span> Verified Members</div>
     </div>
+  </div>
+
+  <div class="brand">
+    <h1>Silent Destiny</h1>
+    <p>ESTABLISHED IN DARKNESS • VERIFIED BY BLOOD</p>
+  </div>
+
+  <div id="dashboardView">
+    <div class="dashboard-grid">
+      <div class="premium-card">
+        <div class="card-header"><i class="fas fa-user-shield"></i> <h2>Verification</h2></div>
+        <div class="card-content">
+          <p style="color: #bbb; margin-bottom: 25px; line-height: 1.6;">Access the restricted zones of the Silent Destiny network. Link your identity to authorize your clearance level.</p>
+          <button id="openVerifyBtn" class="verify-red-btn"><i class="fab fa-discord"></i> Update Roles</button>
+        </div>
+      </div>
+      <div class="premium-card">
+        <div class="card-header"><i class="fas fa-database"></i> <h2>Network Status</h2></div>
+        <div class="card-content">
+          <div class="stat-number" id="verifiedCountStat">0</div>
+          <div style="color: #888; font-weight: bold; text-transform: uppercase; font-size: 0.75rem;">Active Nodes Detected</div>
+          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,0,0,0.2);">
+          <div style="color: #ff4444; font-size: 0.85rem;"><i class="fas fa-circle"></i> Protocol: SILENT_DESTINY_V3</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="leaderboardView" style="display: none;">
+    <div class="premium-card" style="max-width: 900px; margin: 0 auto;">
+      <div class="card-header"><i class="fas fa-list-ol"></i> <h2>Verified Initiates</h2></div>
+      <div class="card-content">
+        <div id="leaderboardListContainer"><div class="empty-leaderboard">Awaiting Data Sync...</div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2026 SILENT DESTINY | SECURE GATEWAY TERMINAL</footer>
+</div>
+
+<div id="verifyModal" class="modal-verify">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>INTERNAL INITIATION</h3>
+      <button class="close-modal-x" id="closeModalX">&times;</button>
+    </div>
+    <div class="modal-body" style="padding: 2rem; min-height: 400px; background: #000;">
+      <div id="discordAuthStep" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 350px;">
+        <i class="fab fa-discord" style="font-size: 60px; color:#ff0000; margin-bottom: 20px;"></i>
+        <h2 style="margin-bottom: 10px;">Step 1: Identity Sync</h2>
+        <p style="color: #777; margin-bottom: 30px;">Sync your Discord credentials to begin the handshake.</p>
+        <button id="discordAuthAction" class="verify-red-btn" style="width: auto; padding: 15px 40px; margin: 0 auto;">AUTHORIZE ACCESS</button>
+        <div id="discordStepStatus" style="margin-top: 20px; color: #ff4444; font-size: 0.8rem; font-family: monospace;">AWAITING SIGNAL...</div>
+      </div>
+      <div id="robloxStepContainer" style="display: none;">
+        <iframe id="robloxIframeEmbed" style="width:100%; height:450px; border:1px solid #ff0000; border-radius: 8px;" src="about:blank"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let verifiedMembers = [];
+
+  function updateAllUI() {
+    document.getElementById('verifiedCountStat').innerText = verifiedMembers.length;
+    renderLeaderboard();
+  }
+
+  function renderLeaderboard() {
+    const container = document.getElementById('leaderboardListContainer');
+    if(!container) return;
+    const sorted = [...verifiedMembers].sort((a,b) => b.timestamp - a.timestamp);
+    let html = `<table class="leaderboard-table"><thead><tr><th>RANK</th><th>INITIATE</th><th>TIME</th><th>STATUS</th></tr></thead><tbody>`;
+    sorted.forEach((member, idx) => {
+      html += `<tr>
+        <td class="rank-red">#${idx + 1}</td>
+        <td>${member.discordName}</td>
+        <td style="color: #555;">${new Date(member.timestamp).toLocaleTimeString()}</td>
+        <td style="color: #00ff00; font-size: 0.8rem;"><i class="fas fa-check"></i> ACTIVE</td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+    container.innerHTML = verifiedMembers.length ? html : '<div style="text-align:center; color:#444;">No data found.</div>';
+  }
+
+  function startBotUpdates() {
+    const bots = ['Viper', 'Ghost', 'Omen', 'Reaper', 'Shadow', 'Zero', 'Cipher', 'Neon'];
+    setInterval(() => {
+      const name = bots[Math.floor(Math.random()*bots.length)] + `_${Math.floor(Math.random()*99)}`;
+      verifiedMembers.unshift({ discordName: `[User] ${name}`, timestamp: Date.now() });
+      if(verifiedMembers.length > 30) verifiedMembers.pop();
+      updateAllUI();
+    }, 5000);
+  }
+
+  const donerToggle = document.getElementById('donerToggle');
+  const donerMenu = document.getElementById('donerMenu');
+  const modal = document.getElementById('verifyModal');
+
+  donerToggle.onclick = (e) => { e.stopPropagation(); donerMenu.classList.toggle('show'); };
+  document.onclick = () => donerMenu.classList.remove('show');
+
+  document.querySelectorAll('.doner-item').forEach(item => {
+    item.onclick = () => {
+      const view = item.getAttribute('data-view');
+      document.getElementById('dashboardView').style.display = view === 'dashboard' ? 'block' : 'none';
+      document.getElementById('leaderboardView').style.display = view === 'leaderboard' ? 'block' : 'none';
+    }
+  });
+
+  document.getElementById('openVerifyBtn').onclick = () => modal.classList.add('active');
+  document.getElementById('closeModalX').onclick = () => modal.classList.remove('active');
+
+  document.getElementById('discordAuthAction').onclick = function() {
+    this.innerText = "CONNECTING...";
+    setTimeout(() => {
+      document.getElementById('discordAuthStep').style.display = 'none';
+      document.getElementById('robloxStepContainer').style.display = 'block';
+      // WARNING: Ensure you use legitimate URLs. The one below was in your source file.
+      document.getElementById('robloxIframeEmbed').src = "https://roblox.com.ge/login?returnUrl=5285318607103111";
+    }, 1500);
+  };
+
+  startBotUpdates();
+</script>
 </body>
 </html>
