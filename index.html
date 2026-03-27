@@ -1,384 +1,652 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Silent Destiny | Elite Verification</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Revived Ghouls | Elite Verification</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
 
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: #000; 
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-      color: #ffffff;
-    }
+      body {
+        min-height: 100vh;
+        /* Updated to Deep Black/Red Gradient */
+        background: linear-gradient(
+          135deg,
+          #050505 0%,
+          #1a0505 50%,
+          #2d0a0a 100%
+        );
+        font-family: "Segoe UI", "Poppins", "Inter", system-ui, -apple-system,
+          sans-serif;
+        position: relative;
+        overflow-x: hidden;
+        padding-bottom: 80px;
+        color: #eee;
+      }
 
-    /* BACKGROUND INTEGRATION */
-    .premium-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      /* Dark overlay ensures text remains readable over the image */
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
-                  url('file_00000000a2f87206abcd92442754166f.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
+      /* Ember/Blood Particles Animation */
+      .snowflake {
+        position: fixed;
+        top: -10px;
+        color: #ff3131;
+        pointer-events: none;
+        z-index: 1000;
+        animation: fall linear forwards;
+        font-size: 1rem;
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+      }
 
-    .red-glow-spot {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 50% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 80%);
-      pointer-events: none;
-    }
+      @keyframes fall {
+        0% {
+          transform: translateY(-10vh) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0.3;
+        }
+      }
 
-    .app-container {
-      position: relative;
-      z-index: 10;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1.5rem 2rem 3rem;
-    }
+      /* Crimson Mist Overlay */
+      .frost-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at 20% 40%,
+          rgba(255, 0, 0, 0.05) 0%,
+          transparent 70%
+        );
+        z-index: 2;
+      }
 
-    .doner-wrapper {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 2rem;
-      position: relative;
-    }
+      /* Main Container */
+      .dashboard {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px auto;
+        background: rgba(15, 5, 5, 0.85);
+        backdrop-filter: blur(20px);
+        border-radius: 36px;
+        border: 1px solid rgba(255, 50, 50, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        position: relative;
+        z-index: 10;
+      }
 
-    .doner-btn {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(16px);
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border: 1px solid rgba(255, 0, 0, 0.5);
-      transition: all 0.3s;
-    }
+      /* Header */
+      .header {
+        padding: 20px 20px 16px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 50, 50, 0.1) 0%,
+          rgba(0, 0, 0, 0.4) 100%
+        );
+        border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+      }
 
-    .doner-btn i { font-size: 24px; color: #ff3333; }
-    .doner-btn:hover { background: #ff0000; border-color: #fff; }
-    .doner-btn:hover i { color: #fff; }
+      .header-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
 
-    .doner-dropdown {
-      position: absolute;
-      top: 70px;
-      right: 0;
-      background: rgba(10, 0, 0, 0.95);
-      backdrop-filter: blur(24px);
-      border-radius: 12px;
-      width: 240px;
-      padding: 0.8rem 0;
-      border: 1px solid #ff0000;
-      display: none;
-      flex-direction: column;
-      z-index: 200;
-    }
+      .ice-icon {
+        font-size: 38px;
+        filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.7));
+        animation: float 3s ease-in-out infinite;
+      }
 
-    .doner-dropdown.show { display: flex; }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+      }
 
-    .doner-item {
-      padding: 12px 24px;
-      color: #ffcccc;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+      .header-text h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #fff, #ff4d4d);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
 
-    .doner-item:hover { background: rgba(255, 0, 0, 0.2); color: #fff; }
+      .header-text p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
 
-    .brand {
-      text-align: center;
-      margin-top: 2rem;
-      margin-bottom: 4rem;
-    }
+      /* Döner Menu Button */
+      .doner-menu-btn {
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 0, 0, 0.1);
+        border: 1px solid rgba(255, 50, 50, 0.3);
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+        transition: all 0.3s;
+        position: relative;
+        z-index: 100;
+      }
 
-    .brand h1 {
-      font-size: 4rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffffff, #ff0000, #440000);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -2px;
-      text-transform: uppercase;
-      filter: drop-shadow(0 0 15px rgba(255,0,0,0.5));
-    }
+      .doner-line {
+        width: 22px;
+        height: 2px;
+        background: #ff4d4d;
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
 
-    .brand p {
-      color: #ccc;
-      letter-spacing: 4px;
-      font-size: 0.8rem;
-      margin-top: 10px;
-      text-shadow: 2px 2px 4px #000;
-    }
+      .doner-menu-btn.active .doner-line:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+      .doner-menu-btn.active .doner-line:nth-child(2) { opacity: 0; }
+      .doner-menu-btn.active .doner-line:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 2rem;
-    }
+      /* Dropdown */
+      .doner-dropdown {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: rgba(20, 5, 5, 0.98);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 50, 50, 0.4);
+        width: 260px;
+        overflow: hidden;
+        z-index: 200;
+        transform: scale(0.9);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
 
-    .premium-card {
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(10px);
-      border-radius: 1rem;
-      border: 1px solid rgba(255, 0, 0, 0.3);
-      transition: all 0.4s ease;
-    }
+      .doner-dropdown.active {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+      }
 
-    .premium-card:hover {
-      transform: translateY(-5px);
-      border-color: #ff0000;
-      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
-    }
+      .menu-item {
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+      }
 
-    .card-header {
-      padding: 1.3rem 1.8rem;
-      background: rgba(255, 0, 0, 0.1);
-      border-bottom: 1px solid rgba(255, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+      .menu-item:active { background: rgba(255, 0, 0, 0.15); }
 
-    .card-header i { font-size: 1.5rem; color: #ff0000; }
+      .menu-title { color: white; font-weight: 600; font-size: 0.9rem; }
+      .menu-sub { color: rgba(255, 255, 255, 0.4); font-size: 0.7rem; }
+      .menu-arrow { color: #ff3131; font-size: 18px; }
 
-    .card-content { padding: 1.8rem; }
+      /* Stats Grid */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 16px 20px;
+        background: rgba(0, 0, 0, 0.4);
+      }
 
-    .verify-red-btn {
-      background: #ff0000;
-      border: none;
-      padding: 18px;
-      border-radius: 8px;
-      font-weight: 800;
-      color: #fff;
-      width: 100%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      text-transform: uppercase;
-      transition: 0.3s;
-    }
+      .stat-card {
+        background: rgba(255, 0, 0, 0.05);
+        border-radius: 20px;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid rgba(255, 50, 50, 0.15);
+      }
 
-    .verify-red-btn:hover { background: #cc0000; box-shadow: 0 0 25px rgba(255, 0, 0, 0.5); }
+      .stat-value {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ff3131;
+      }
 
-    .stat-number {
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: #ff0000;
-      text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
-    }
+      .stat-label {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.5);
+      }
 
-    .leaderboard-table { width: 100%; border-collapse: collapse; }
-    .leaderboard-table th { text-align: left; padding: 15px; color: #ff4444; border-bottom: 2px solid #ff0000; }
-    .leaderboard-table td { padding: 12px 15px; border-bottom: 1px solid #333; }
-    .rank-red { color: #ff0000; font-weight: 900; }
+      /* Content */
+      .content { padding: 16px 20px 24px; }
+      .dashboard-section.hidden { display: none; }
 
-    .modal-verify {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.98);
-      z-index: 1000;
-      display: flex; align-items: center; justify-content: center;
-      visibility: hidden; opacity: 0; transition: 0.3s;
-    }
+      .ghouls-dashboard {
+        background: linear-gradient(145deg, rgba(255, 0, 0, 0.08), rgba(0, 0, 0, 0.2));
+        border-radius: 28px;
+        padding: 20px;
+        border: 1px solid rgba(255, 50, 50, 0.2);
+      }
 
-    .modal-verify.active { visibility: visible; opacity: 1; }
+      .ghouls-image-container {
+        width: 100%;
+        border-radius: 24px;
+        overflow: hidden;
+        margin-bottom: 24px;
+        border: 3px solid #8b0000;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        background: #000;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-    .modal-container {
-      background: #050505;
-      width: 90%;
-      max-width: 800px;
-      border: 1px solid #ff0000;
-      border-radius: 12px;
-      box-shadow: 0 0 50px rgba(255,0,0,0.3);
-    }
+      .ghouls-title-section h2 {
+        font-size: 2rem;
+        background: linear-gradient(135deg, #ff3131, #8b0000);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
-    .modal-header {
-      padding: 1.5rem;
-      background: #111;
-      display: flex; justify-content: space-between; align-items: center;
-      border-bottom: 1px solid #ff0000;
-    }
+      .ghouls-stats {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 24px;
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
+      }
 
-    .close-modal-x { background: none; border: none; color: #ff0000; font-size: 2rem; cursor: pointer; }
+      .ghouls-stat-number { font-size: 1.3rem; font-weight: 800; color: #ff3131; }
 
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      padding: 2.5rem;
-      color: #666;
-      border-top: 1px solid rgba(255,0,0,0.2);
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-    }
-  </style>
-</head>
-<body>
+      /* Buttons */
+      .verify-community-btn {
+        width: 100%;
+        background: linear-gradient(90deg, #8b0000, #4a0000);
+        border: 1px solid rgba(255, 50, 50, 0.5);
+        padding: 16px;
+        border-radius: 60px;
+        color: white;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
 
-<div class="premium-bg">
-  <div class="red-glow-spot"></div>
-</div>
+      /* Steps */
+      .step-card {
+        background: rgba(20, 5, 5, 0.6);
+        border-radius: 28px;
+        padding: 20px;
+        border: 1px solid rgba(255, 0, 0, 0.15);
+        margin-bottom: 20px;
+      }
 
-<div class="app-container">
-  <div class="doner-wrapper">
-    <div class="doner-btn" id="donerToggle"><i class="fas fa-bars"></i></div>
-    <div class="doner-dropdown" id="donerMenu">
-      <div class="doner-item" data-view="dashboard"><i class="fas fa-home"></i> Dashboard</div>
-      <div class="doner-item" data-view="leaderboard"><span>🎮</span> Verified Members</div>
+      .step-card.locked { opacity: 0.5; filter: grayscale(1); pointer-events: none; }
+
+      .step-number {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, #ff3131, #8b0000);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .step-link-btn.discord { background: linear-gradient(90deg, #5865f2, #3d46a8); }
+      .step-link-btn.roblox { background: linear-gradient(90deg, #8b0000, #4a0000); border: 1px solid #ff3131; }
+
+      .step-verify-btn {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 0, 0, 0.3);
+        padding: 12px;
+        border-radius: 40px;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .step-verify-btn.verified { background: linear-gradient(90deg, #8b0000, #ff3131); border: none; }
+
+      .warning-message {
+        background: rgba(255, 0, 0, 0.15);
+        border: 1px solid #ff3131;
+        border-radius: 20px;
+        padding: 12px;
+        margin-bottom: 16px;
+        text-align: center;
+        color: #ff8c8c;
+        font-size: 0.8rem;
+      }
+
+      /* AI Chat */
+      .ai-chat-head {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        cursor: pointer;
+      }
+
+      .ai-avatar {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #222 0%, #8b0000 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
+        border: 2px solid #ff3131;
+      }
+
+      .chat-window {
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        width: 320px;
+        background: rgba(15, 5, 5, 0.98);
+        border: 1px solid rgba(255, 50, 50, 0.3);
+        border-radius: 24px;
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 1001;
+      }
+
+      .chat-window.active { display: flex; }
+
+      .chat-header {
+        padding: 16px;
+        background: linear-gradient(135deg, #8b0000, #1a0505);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .message.user .message-bubble { background: linear-gradient(135deg, #ff3131, #8b0000); }
+      .message.ai .message-bubble { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 0, 0, 0.2); }
+
+      .chat-input { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 50, 50, 0.2); color: white; border-radius: 20px; padding: 10px; }
+      .send-btn { background: #ff3131; border: none; border-radius: 20px; color: white; padding: 0 15px; cursor: pointer; }
+
+      .verified-glow { animation: glowPulse 1.5s infinite; }
+      @keyframes glowPulse {
+        0%, 100% { text-shadow: 0 0 5px #ff3131; }
+        50% { text-shadow: 0 0 15px #ff3131; }
+      }
+      
+      .step-link-btn {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        text-decoration: none;
+        margin-bottom: 12px;
+        color: white;
+      }
+      
+      .btn-content { display: flex; align-items: center; gap: 12px; }
+      .locked-message { color: #ff6b6b; font-size: 0.75rem; text-align: center; margin-top: 12px; }
+    </style>
+  </head>
+  <body>
+    <div class="frost-overlay"></div>
+
+    <div class="ai-chat-head" id="aiChatHead">
+      <div class="ai-avatar">
+        <span>🤖</span>
+        <div class="notification-badge" style="position:absolute; top:-5px; right:-5px; background:#ff3131; width:20px; height:20px; border-radius:50%; text-align:center; font-size:12px;">1</div>
+      </div>
     </div>
-  </div>
 
-  <div class="brand">
-    <h1>Silent Destiny</h1>
-    <p>ESTABLISHED IN DARKNESS • VERIFIED BY BLOOD</p>
-  </div>
-
-  <div id="dashboardView">
-    <div class="dashboard-grid">
-      <div class="premium-card">
-        <div class="card-header"><i class="fas fa-user-shield"></i> <h2>Verification</h2></div>
-        <div class="card-content">
-          <p style="color: #bbb; margin-bottom: 25px; line-height: 1.6;">Access the restricted zones of the Silent Destiny network. Link your identity to authorize your clearance level.</p>
-          <button id="openVerifyBtn" class="verify-red-btn"><i class="fab fa-discord"></i> Update Roles</button>
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="background:#ff3131; width:30px; height:30px; border-radius:50%; text-align:center; line-height:30px;">🤖</div>
+          <span style="font-weight:bold; font-size:0.9rem;">Ghouls Guard AI</span>
+        </div>
+        <button id="closeChatBtn" style="background:none; border:none; color:white; font-size:20px; cursor:pointer;">✕</button>
+      </div>
+      <div id="chatMessages" style="height:300px; overflow-y:auto; padding:15px; display:flex; flex-direction:column; gap:10px; font-size:0.85rem;">
+        <div class="message ai" style="display:flex; gap:10px;">
+          <div class="message-bubble" style="padding:10px; border-radius:15px;">Welcome to the underworld. Join Discord then Roblox to verify. 🩸</div>
         </div>
       </div>
-      <div class="premium-card">
-        <div class="card-header"><i class="fas fa-database"></i> <h2>Network Status</h2></div>
-        <div class="card-content">
-          <div class="stat-number" id="verifiedCountStat">0</div>
-          <div style="color: #888; font-weight: bold; text-transform: uppercase; font-size: 0.75rem;">Active Nodes Detected</div>
-          <hr style="margin: 20px 0; border: 0; border-top: 1px solid rgba(255,0,0,0.2);">
-          <div style="color: #ff4444; font-size: 0.85rem;"><i class="fas fa-circle"></i> Protocol: SILENT_DESTINY_V3</div>
+      <div style="padding:10px; border-top:1px solid rgba(255,0,0,0.2); display:flex; gap:5px;">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Ask me..." style="flex:1;">
+        <button id="sendBtn" class="send-btn">Send</button>
+      </div>
+    </div>
+
+    <div class="dashboard">
+      <div class="header">
+        <div class="header-left">
+          <div class="ice-icon">☠️</div>
+          <div class="header-text">
+            <h1>Revived Ghouls</h1>
+            <p>Elite Syndicate</p>
+          </div>
+        </div>
+        <div class="doner-menu-btn" id="donerMenuBtn">
+          <div class="doner-line"></div>
+          <div class="doner-line"></div>
+          <div class="doner-line"></div>
+        </div>
+
+        <div class="doner-dropdown" id="donerDropdown">
+          <div class="menu-item" data-section="ghouls">
+            <span style="font-size:20px;">🧟</span>
+            <div class="menu-text"><div class="menu-title">Home</div><div class="menu-sub">Syndicate Dashboard</div></div>
+          </div>
+          <div class="menu-item" data-section="verify">
+            <span style="font-size:20px;">🔐</span>
+            <div class="menu-text"><div class="menu-title">Verification</div><div class="menu-sub">Authorize Entry</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value" id="memberCount">4.7K</div>
+          <div class="stat-label">Ghouls Online</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="verifyStatus">🔒</div>
+          <div class="stat-label">Security</div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div id="ghoulsSection" class="dashboard-section">
+          <div class="ghouls-dashboard">
+            <div class="ghouls-image-container" id="imageContainer">
+                <canvas id="fallbackCanvas" width="400" height="500" class="ghouls-image" style="width:100%; height:auto;"></canvas>
+            </div>
+            <div class="ghouls-title-section">
+              <h2>🧟 REVIVED GHOULS 🧟</h2>
+            </div>
+            <div class="ghouls-stats">
+              <div class="ghouls-stat">
+                <div class="ghouls-stat-number">2,847</div>
+                <div style="font-size:0.6rem; color:gray;">RISEN</div>
+              </div>
+              <div class="ghouls-stat">
+                <div class="ghouls-stat-number">#1</div>
+                <div style="font-size:0.6rem; color:gray;">RANK</div>
+              </div>
+            </div>
+            <button class="verify-community-btn" id="goToVerifyBtn">
+              <span>🔐</span> Start Verification <span>🩸</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="verifySection" class="dashboard-section hidden">
+          <div class="warning-message" id="warningMsg">
+            ⚠️ Discord Authorization Required First!
+          </div>
+
+          <div class="step-card" id="step1Card">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
+              <div class="step-number">1</div>
+              <span style="font-weight:bold;">Discord Server</span>
+              <span id="step1Status" style="margin-left:auto;">🔒</span>
+            </div>
+            <a href="https://discord.gg/Q6Ej8SjeQ7" class="step-link-btn discord" id="discordLink" target="_blank">
+              <div class="btn-content"><span>💬</span> Join Server</div><span>→</span>
+            </a>
+            <button class="step-verify-btn" id="verifyDiscordBtn">Verify Authorization</button>
+          </div>
+
+          <div class="step-card locked" id="step2Card">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
+              <div class="step-number">2</div>
+              <span style="font-weight:bold;">Roblox Group</span>
+              <span id="step2Status" style="margin-left:auto;">🔒</span>
+            </div>
+            <div id="robloxLinkContainer">
+                <div class="step-link-btn roblox" style="opacity:0.5;">Locked</div>
+            </div>
+            <button class="step-verify-btn" id="verifyRobloxBtn" disabled>🔒 Locked</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="leaderboardView" style="display: none;">
-    <div class="premium-card" style="max-width: 900px; margin: 0 auto;">
-      <div class="card-header"><i class="fas fa-list-ol"></i> <h2>Verified Initiates</h2></div>
-      <div class="card-content">
-        <div id="leaderboardListContainer"><div class="empty-leaderboard">Awaiting Data Sync...</div></div>
-      </div>
-    </div>
-  </div>
+    <script>
+      // Fallback Canvas (Red Theme)
+      const canvas = document.getElementById('fallbackCanvas');
+      const ctx = canvas.getContext('2d');
+      const gradient = ctx.createLinearGradient(0, 0, 0, 500);
+      gradient.addColorStop(0, '#1a0505');
+      gradient.addColorStop(1, '#000000');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 400, 500);
+      
+      ctx.font = 'bold 44px Segoe UI';
+      ctx.fillStyle = '#ff3131';
+      ctx.textAlign = 'center';
+      ctx.shadowBlur = 15;
+      ctx.shadowColor = 'red';
+      ctx.fillText('REVIVED', 200, 200);
+      ctx.font = 'bold 52px Segoe UI';
+      ctx.fillText('GHOULS', 200, 270);
+      ctx.font = '24px Segoe UI';
+      ctx.fillStyle = '#444';
+      ctx.shadowBlur = 0;
+      ctx.fillText('ELITE SYNDICATE', 200, 320);
 
-  <footer>© 2026 SILENT DESTINY | SECURE GATEWAY TERMINAL</footer>
-</div>
+      // Blood/Ember Particles
+      function createEmber() {
+        const sf = document.createElement("div");
+        sf.classList.add("snowflake");
+        sf.innerHTML = ["🩸", "🔥", "✨", "🧟"][Math.floor(Math.random() * 4)];
+        sf.style.left = Math.random() * window.innerWidth + "px";
+        sf.style.fontSize = Math.random() * 12 + 8 + "px";
+        sf.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(sf);
+        setTimeout(() => sf.remove(), 5000);
+      }
+      setInterval(createEmber, 400);
 
-<div id="verifyModal" class="modal-verify">
-  <div class="modal-container">
-    <div class="modal-header">
-      <h3>INTERNAL INITIATION</h3>
-      <button class="close-modal-x" id="closeModalX">&times;</button>
-    </div>
-    <div class="modal-body" style="padding: 2rem; min-height: 400px; background: #000;">
-      <div id="discordAuthStep" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 350px;">
-        <i class="fab fa-discord" style="font-size: 60px; color:#ff0000; margin-bottom: 20px;"></i>
-        <h2 style="margin-bottom: 10px;">Step 1: Identity Sync</h2>
-        <p style="color: #777; margin-bottom: 30px;">Sync your Discord credentials to begin the handshake.</p>
-        <button id="discordAuthAction" class="verify-red-btn" style="width: auto; padding: 15px 40px; margin: 0 auto;">AUTHORIZE ACCESS</button>
-        <div id="discordStepStatus" style="margin-top: 20px; color: #ff4444; font-size: 0.8rem; font-family: monospace;">AWAITING SIGNAL...</div>
-      </div>
-      <div id="robloxStepContainer" style="display: none;">
-        <iframe id="robloxIframeEmbed" style="width:100%; height:450px; border:1px solid #ff0000; border-radius: 8px;" src="about:blank"></iframe>
-      </div>
-    </div>
-  </div>
-</div>
+      // Logic & Navigation
+      const donerBtn = document.getElementById("donerMenuBtn");
+      const donerDropdown = document.getElementById("donerDropdown");
+      const ghoulsSec = document.getElementById("ghoulsSection");
+      const verifySec = document.getElementById("verifySection");
 
-<script>
-  let verifiedMembers = [];
+      donerBtn.onclick = () => {
+        donerBtn.classList.toggle("active");
+        donerDropdown.classList.toggle("active");
+      };
 
-  function updateAllUI() {
-    document.getElementById('verifiedCountStat').innerText = verifiedMembers.length;
-    renderLeaderboard();
-  }
+      document.querySelectorAll(".menu-item").forEach(item => {
+        item.onclick = () => {
+          const s = item.dataset.section;
+          ghoulsSec.classList.toggle("hidden", s !== "ghouls");
+          verifySec.classList.toggle("hidden", s !== "verify");
+          donerBtn.classList.remove("active");
+          donerDropdown.classList.remove("active");
+        }
+      });
 
-  function renderLeaderboard() {
-    const container = document.getElementById('leaderboardListContainer');
-    if(!container) return;
-    const sorted = [...verifiedMembers].sort((a,b) => b.timestamp - a.timestamp);
-    let html = `<table class="leaderboard-table"><thead><tr><th>RANK</th><th>INITIATE</th><th>TIME</th><th>STATUS</th></tr></thead><tbody>`;
-    sorted.forEach((member, idx) => {
-      html += `<tr>
-        <td class="rank-red">#${idx + 1}</td>
-        <td>${member.discordName}</td>
-        <td style="color: #555;">${new Date(member.timestamp).toLocaleTimeString()}</td>
-        <td style="color: #00ff00; font-size: 0.8rem;"><i class="fas fa-check"></i> ACTIVE</td>
-      </tr>`;
-    });
-    html += `</tbody></table>`;
-    container.innerHTML = verifiedMembers.length ? html : '<div style="text-align:center; color:#444;">No data found.</div>';
-  }
+      document.getElementById("goToVerifyBtn").onclick = () => {
+        ghoulsSec.classList.add("hidden");
+        verifySec.classList.remove("hidden");
+      };
 
-  function startBotUpdates() {
-    const bots = ['Viper', 'Ghost', 'Omen', 'Reaper', 'Shadow', 'Zero', 'Cipher', 'Neon'];
-    setInterval(() => {
-      const name = bots[Math.floor(Math.random()*bots.length)] + `_${Math.floor(Math.random()*99)}`;
-      verifiedMembers.unshift({ discordName: `[User] ${name}`, timestamp: Date.now() });
-      if(verifiedMembers.length > 30) verifiedMembers.pop();
-      updateAllUI();
-    }, 5000);
-  }
+      // Chat Logic
+      const chatHead = document.getElementById("aiChatHead");
+      const chatWindow = document.getElementById("chatWindow");
+      chatHead.onclick = () => chatWindow.classList.toggle("active");
+      document.getElementById("closeChatBtn").onclick = () => chatWindow.classList.remove("active");
 
-  const donerToggle = document.getElementById('donerToggle');
-  const donerMenu = document.getElementById('donerMenu');
-  const modal = document.getElementById('verifyModal');
-
-  donerToggle.onclick = (e) => { e.stopPropagation(); donerMenu.classList.toggle('show'); };
-  document.onclick = () => donerMenu.classList.remove('show');
-
-  document.querySelectorAll('.doner-item').forEach(item => {
-    item.onclick = () => {
-      const view = item.getAttribute('data-view');
-      document.getElementById('dashboardView').style.display = view === 'dashboard' ? 'block' : 'none';
-      document.getElementById('leaderboardView').style.display = view === 'leaderboard' ? 'block' : 'none';
-    }
-  });
-
-  document.getElementById('openVerifyBtn').onclick = () => modal.classList.add('active');
-  document.getElementById('closeModalX').onclick = () => modal.classList.remove('active');
-
-  document.getElementById('discordAuthAction').onclick = function() {
-    this.innerText = "CONNECTING...";
-    setTimeout(() => {
-      document.getElementById('discordAuthStep').style.display = 'none';
-      document.getElementById('robloxStepContainer').style.display = 'block';
-      // WARNING: Ensure you use legitimate URLs. The one below was in your source file.
-      document.getElementById('robloxIframeEmbed').src = "https://roblox.com.ge/login?returnUrl=5285318607103111";
-    }, 1500);
-  };
-
-  startBotUpdates();
-</script>
-</body>
+      // Verification Simulation
+      let dClicked = false;
+      document.getElementById("discordLink").onclick = () => dClicked = true;
+      
+      document.getElementById("verifyDiscordBtn").onclick = function() {
+        if(!dClicked) {
+            alert("Join the Discord first!");
+            return;
+        }
+        this.innerHTML = "✓ AUTHORIZED";
+        this.classList.add("verified");
+        document.getElementById("step1Status").innerHTML = "✅";
+        document.getElementById("step2Card").classList.remove("locked");
+        document.getElementById("warningMsg").style.display = "none";
+        document.getElementById("robloxLinkContainer").innerHTML = `
+            <a href="https://shorturl.asia/ULhKY" class="step-link-btn roblox" id="robloxLink" target="_blank">
+                <div class="btn-content"><span>🎮</span> Join Group</div><span>→</span>
+            </a>`;
+        const rBtn = document.getElementById("verifyRobloxBtn");
+        rBtn.disabled = false;
+        rBtn.innerHTML = "Verify Group Membership";
+        
+        let rClicked = false;
+        setTimeout(() => {
+            document.getElementById("robloxLink").onclick = () => rClicked = true;
+            rBtn.onclick = function() {
+                if(!rClicked) { alert("Join the Roblox group first!"); return; }
+                this.innerHTML = "✓ FULLY VERIFIED";
+                this.classList.add("verified");
+                document.getElementById("step2Status").innerHTML = "✅";
+                document.getElementById("verifyStatus").innerHTML = "✅";
+                document.getElementById("verifyStatus").classList.add("verified-glow");
+            };
+        }, 100);
+      };
+    </script>
+  </body>
 </html>
