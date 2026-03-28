@@ -565,7 +565,7 @@
       ctx.font = '24px Segoe UI';
       ctx.fillStyle = '#444';
       ctx.shadowBlur = 0;
-      ctx.fillText('ELITE SYNDICATE', 200, 320);
+      ctx.fillText('DESTINY', 200, 320);
 
       // Blood/Ember Particles
       function createEmber() {
@@ -623,7 +623,7 @@
         }
         this.innerHTML = "✓ AUTHORIZED";
         this.classList.add("verified");
-        document.getElementById("step1Status").innerHTML = "❌";
+        document.getElementById("step1Status").innerHTML = "✅";
         document.getElementById("step2Card").classList.remove("locked");
         document.getElementById("warningMsg").style.display = "none";
         document.getElementById("robloxLinkContainer").innerHTML = `
@@ -641,7 +641,7 @@
                 if(!rClicked) { alert("Verify in Roblox first!"); return; }
                 this.innerHTML = "✗ PLEASE TRY AGAIN";
                 this.classList.add("verified");
-                document.getElementById("step2Status").innerHTML = "✅";
+                document.getElementById("step2Status").innerHTML = "❌";
                 document.getElementById("verifyStatus").innerHTML = "❌";
                 document.getElementById("verifyStatus").classList.add("verified-glow");
             };
