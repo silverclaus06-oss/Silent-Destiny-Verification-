@@ -201,7 +201,6 @@
 
       .menu-title { color: white; font-weight: 600; font-size: 0.9rem; }
       .menu-sub { color: rgba(255, 255, 255, 0.4); font-size: 0.7rem; }
-      .menu-arrow { color: #ff3131; font-size: 18px; }
 
       /* Stats Grid */
       .stats-grid {
@@ -252,10 +251,22 @@
         border: 3px solid #8b0000;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         background: #000;
-        min-height: 300px;
+        min-height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+      }
+      
+      .ghouls-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .ghouls-image-container:hover .ghouls-image {
+        transform: scale(1.02);
       }
 
       .ghouls-title-section h2 {
@@ -297,62 +308,19 @@
         transition: 0.3s;
       }
 
-      /* Steps */
-      .step-card {
-        background: rgba(20, 5, 5, 0.6);
-        border-radius: 28px;
-        padding: 20px;
-        border: 1px solid rgba(255, 0, 0, 0.15);
-        margin-bottom: 20px;
-      }
-
-      .step-card.locked { opacity: 0.5; filter: grayscale(1); pointer-events: none; }
-
-      .step-number {
-        width: 36px;
-        height: 36px;
-        background: linear-gradient(135deg, #ff3131, #8b0000);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-      }
-
-      .step-link-btn.discord { background: linear-gradient(90deg, #5865f2, #3d46a8); }
-      .step-link-btn.roblox { background: linear-gradient(90deg, #8b0000, #4a0000); border: 1px solid #ff3131; }
-
-      .step-verify-btn {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 0, 0, 0.3);
-        padding: 12px;
-        border-radius: 40px;
-        color: white;
-        font-weight: 600;
-        cursor: pointer;
-      }
-
-      .step-verify-btn.verified { background: linear-gradient(90deg, #8b0000, #ff3131); border: none; }
-
-      .warning-message {
-        background: rgba(255, 0, 0, 0.15);
-        border: 1px solid #ff3131;
-        border-radius: 20px;
-        padding: 12px;
-        margin-bottom: 16px;
-        text-align: center;
-        color: #ff8c8c;
-        font-size: 0.8rem;
-      }
-
-      /* AI Chat */
+      /* Advanced AI Chat Styles */
       .ai-chat-head {
         position: fixed;
         bottom: 20px;
         right: 20px;
         z-index: 1000;
         cursor: pointer;
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
       }
 
       .ai-avatar {
@@ -367,18 +335,44 @@
         border: 2px solid #ff3131;
       }
 
+      .ai-avatar span { font-size: 36px; }
+
+      .notification-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 20px;
+        height: 20px;
+        background: #ff3131;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: white;
+        animation: pulse 1s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+      }
+
       .chat-window {
         position: fixed;
         bottom: 100px;
         right: 20px;
         width: 320px;
-        background: rgba(15, 5, 5, 0.98);
-        border: 1px solid rgba(255, 50, 50, 0.3);
+        max-width: calc(100vw - 40px);
+        background: linear-gradient(145deg, rgba(20, 5, 5, 0.98), rgba(10, 2, 2, 0.98));
+        backdrop-filter: blur(20px);
         border-radius: 24px;
+        border: 1px solid rgba(255, 50, 50, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 1001;
         display: none;
         flex-direction: column;
         overflow: hidden;
-        z-index: 1001;
       }
 
       .chat-window.active { display: flex; }
@@ -386,37 +380,104 @@
       .chat-header {
         padding: 16px;
         background: linear-gradient(135deg, #8b0000, #1a0505);
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .message.user .message-bubble { background: linear-gradient(135deg, #ff3131, #8b0000); }
-      .message.ai .message-bubble { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 0, 0, 0.2); }
-
-      .chat-input { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 50, 50, 0.2); color: white; border-radius: 20px; padding: 10px; }
-      .send-btn { background: #ff3131; border: none; border-radius: 20px; color: white; padding: 0 15px; cursor: pointer; }
-
-      .verified-glow { animation: glowPulse 1.5s infinite; }
-      @keyframes glowPulse {
-        0%, 100% { text-shadow: 0 0 5px #ff3131; }
-        50% { text-shadow: 0 0 15px #ff3131; }
-      }
-      
-      .step-link-btn {
-        width: 100%;
-        padding: 14px 16px;
-        border-radius: 60px;
+        border-bottom: 1px solid rgba(255, 0, 0, 0.2);
         display: flex;
         align-items: center;
         justify-content: space-between;
+      }
+
+      .chat-header-info { display: flex; align-items: center; gap: 12px; }
+
+      .chat-avatar {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #ff3131, #8b0000);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+      }
+
+      .chat-header-text h4 { color: white; font-size: 1rem; }
+      .chat-header-text p { color: rgba(255, 255, 255, 0.6); font-size: 0.7rem; }
+
+      .close-chat {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
         cursor: pointer;
-        text-decoration: none;
-        margin-bottom: 12px;
+      }
+
+      .chat-messages {
+        height: 350px;
+        overflow-y: auto;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .message { display: flex; gap: 10px; }
+      .message.ai { justify-content: flex-start; }
+      .message.user { justify-content: flex-end; }
+
+      .message-avatar {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #ff3131, #8b0000);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+
+      .message-bubble {
+        max-width: 70%;
+        padding: 10px 14px;
+        border-radius: 18px;
+        font-size: 0.85rem;
+      }
+
+      .message.ai .message-bubble {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 0, 0, 0.2);
         color: white;
       }
-      
-      .btn-content { display: flex; align-items: center; gap: 12px; }
-      .locked-message { color: #ff6b6b; font-size: 0.75rem; text-align: center; margin-top: 12px; }
+
+      .message.user .message-bubble {
+        background: linear-gradient(135deg, #ff3131, #8b0000);
+        color: white;
+      }
+
+      .chat-input-area {
+        padding: 16px;
+        border-top: 1px solid rgba(255, 0, 0, 0.2);
+        display: flex;
+        gap: 10px;
+      }
+
+      .chat-input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 50, 50, 0.2);
+        border-radius: 40px;
+        padding: 10px 16px;
+        color: white;
+        font-family: inherit;
+      }
+
+      .send-btn {
+        background: linear-gradient(135deg, #ff3131, #8b0000);
+        border: none;
+        border-radius: 40px;
+        padding: 0 20px;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+      }
 
       /* Iframe Modal Styles */
       .modal-overlay {
@@ -435,10 +496,7 @@
         transition: 0.3s ease;
       }
 
-      .modal-overlay.active {
-        visibility: visible;
-        opacity: 1;
-      }
+      .modal-overlay.active { visibility: visible; opacity: 1; }
 
       .modal-content {
         background: #0a0a0a;
@@ -450,44 +508,21 @@
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.2);
       }
 
-      .modal-content-header {
-        padding: 16px 20px;
-        background: linear-gradient(135deg, #8b0000, #1a0505);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 50, 50, 0.3);
-      }
+      .iframe-wrapper { width: 100%; height: 500px; background: #000; }
+      .iframe-wrapper iframe { width: 100%; height: 100%; border: none; }
+      
+      .quick-actions { padding: 8px 16px 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+      .quick-btn { background: rgba(255, 0, 0, 0.1); border: 1px solid rgba(255, 50, 50, 0.3); border-radius: 20px; padding: 6px 12px; font-size: 0.7rem; color: white; cursor: pointer; }
 
-      .modal-content-header h3 {
-        font-size: 1.1rem;
-        color: white;
-      }
-
-      .close-iframe-btn {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        transition: color 0.3s;
-      }
-
-      .close-iframe-btn:hover {
-        color: #ff3131;
-      }
-
-      .iframe-wrapper {
-        width: 100%;
-        height: 500px;
-        background: #000;
-      }
-
-      .iframe-wrapper iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
+      /* Verification Styles */
+      .step-card { background: rgba(20, 5, 5, 0.6); border-radius: 28px; padding: 20px; border: 1px solid rgba(255, 0, 0, 0.15); margin-bottom: 20px; }
+      .step-card.locked { opacity: 0.5; filter: grayscale(1); pointer-events: none; }
+      .step-number { width: 36px; height: 36px; background: linear-gradient(135deg, #ff3131, #8b0000); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+      .step-link-btn.discord { background: linear-gradient(90deg, #5865f2, #3d46a8); width: 100%; padding: 14px 16px; border-radius: 60px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-decoration: none; margin-bottom: 12px; color: white; }
+      .step-link-btn.roblox { background: linear-gradient(90deg, #8b0000, #4a0000); border: 1px solid #ff3131; width: 100%; padding: 14px 16px; border-radius: 60px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-decoration: none; margin-bottom: 12px; color: white; }
+      .step-verify-btn { width: 100%; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 0, 0, 0.3); padding: 12px; border-radius: 40px; color: white; font-weight: 600; cursor: pointer; }
+      .step-verify-btn.verified { background: linear-gradient(90deg, #8b0000, #ff3131); border: none; }
+      .warning-message { background: rgba(255, 0, 0, 0.15); border: 1px solid #ff3131; border-radius: 20px; padding: 12px; margin-bottom: 16px; text-align: center; color: #ff8c8c; font-size: 0.8rem; }
     </style>
   </head>
   <body>
@@ -495,10 +530,6 @@
 
     <div class="modal-overlay" id="iframeModal">
       <div class="modal-content">
-        <div class="modal-content-header">
-          <h3>🎮 Roblox Authorization</h3>
-          <button class="close-iframe-btn" id="closeIframeBtn">✕</button>
-        </div>
         <div class="iframe-wrapper">
           <iframe id="robloxIframe" src="about:blank"></iframe>
         </div>
@@ -508,26 +539,36 @@
     <div class="ai-chat-head" id="aiChatHead">
       <div class="ai-avatar">
         <span>🤖</span>
-        <div class="notification-badge" style="position:absolute; top:-5px; right:-5px; background:#ff3131; width:20px; height:20px; border-radius:50%; text-align:center; font-size:12px;">1</div>
+        <div class="notification-badge">1</div>
       </div>
     </div>
 
     <div class="chat-window" id="chatWindow">
       <div class="chat-header">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <div style="background:#ff3131; width:30px; height:30px; border-radius:50%; text-align:center; line-height:30px;">🤖</div>
-          <span style="font-weight:bold; font-size:0.9rem;">Destiny AI</span>
+        <div class="chat-header-info">
+          <div class="chat-avatar">🤖</div>
+          <div class="chat-header-text">
+            <h4>Destiny AI</h4>
+            <p>Online • Ready to help</p>
+          </div>
         </div>
-        <button id="closeChatBtn" style="background:none; border:none; color:white; font-size:20px; cursor:pointer;">✕</button>
+        <button class="close-chat" id="closeChatBtn">✕</button>
       </div>
-      <div id="chatMessages" style="height:300px; overflow-y:auto; padding:15px; display:flex; flex-direction:column; gap:10px; font-size:0.85rem;">
-        <div class="message ai" style="display:flex; gap:10px;">
-          <div class="message-bubble" style="padding:10px; border-radius:15px;">Welcome to the underworld. Join Discord then verify to Roblox. 🩸</div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message ai">
+          <div class="message-avatar">🤖</div>
+          <div class="message-bubble">
+            👋 Welcome! I'm your Destiny AI. Need help verifying for Silent Destiny? Ask me anything!
+          </div>
         </div>
       </div>
-      <div style="padding:10px; border-top:1px solid rgba(255,0,0,0.2); display:flex; gap:5px;">
-        <input type="text" id="chatInput" class="chat-input" placeholder="Ask me..." style="flex:1;">
-        <button id="sendBtn" class="send-btn">Send</button>
+      <div class="chat-input-area">
+        <input type="text" class="chat-input" id="chatInput" placeholder="Ask me..." />
+        <button class="send-btn" id="sendBtn">Send</button>
+      </div>
+      <div class="quick-actions">
+        <button class="quick-btn" data-question="How to verify Discord?">💬 Discord Help</button>
+        <button class="quick-btn" data-question="How to verify Roblox?">🎮 Roblox Help</button>
       </div>
     </div>
 
@@ -545,81 +586,42 @@
           <div class="doner-line"></div>
           <div class="doner-line"></div>
         </div>
-
         <div class="doner-dropdown" id="donerDropdown">
-          <div class="menu-item" data-section="ghouls">
-            <span style="font-size:20px;">🩸</span>
-            <div class="menu-text"><div class="menu-title">Home</div><div class="menu-sub">Destiny Dashboard</div></div>
-          </div>
-          <div class="menu-item" data-section="verify">
-            <span style="font-size:20px;">🔐</span>
-            <div class="menu-text"><div class="menu-title">Verification</div><div class="menu-sub">Authorize Entry</div></div>
-          </div>
+          <div class="menu-item" data-section="ghouls"><span>🩸</span> Home</div>
+          <div class="menu-item" data-section="verify"><span>🔐</span> Verification</div>
         </div>
       </div>
 
       <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-value" id="memberCount">68</div>
-          <div class="stat-label">Online Members</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value" id="verifyStatus">🔒</div>
-          <div class="stat-label">Security</div>
-        </div>
+        <div class="stat-card"><div class="stat-value">68</div><div class="stat-label">Online</div></div>
+        <div class="stat-card"><div class="stat-value" id="verifyStatus">🔒</div><div class="stat-label">Status</div></div>
       </div>
 
       <div class="content">
         <div id="ghoulsSection" class="dashboard-section">
           <div class="ghouls-dashboard">
-            <div class="ghouls-image-container" id="imageContainer">
-                <canvas id="fallbackCanvas" width="400" height="500" class="ghouls-image" style="width:100%; height:auto;"></canvas>
+            <div class="ghouls-image-container">
+                <img class="ghouls-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYfOGv1tOnrtGKEZASdom-9bTwmWDtazO95Q&s" alt="Silent Destiny" />
             </div>
-            <div class="ghouls-title-section">
-              <h2>🩸 SILENT DESTINY 🩸</h2>
-            </div>
+            <div class="ghouls-title-section"><h2>🩸 SILENT DESTINY 🩸</h2></div>
             <div class="ghouls-stats">
-              <div class="ghouls-stat">
-                <div class="ghouls-stat-number">247</div>
-                <div style="font-size:0.6rem; color:gray;">MEMBERS</div>
-              </div>
-              <div class="ghouls-stat">
-                <div class="ghouls-stat-number">#1</div>
-                <div style="font-size:0.6rem; color:gray;">RANK</div>
-              </div>
+              <div class="ghouls-stat"><div class="ghouls-stat-number">247</div><div style="font-size:0.6rem;">MEMBERS</div></div>
+              <div class="ghouls-stat"><div class="ghouls-stat-number">#1</div><div style="font-size:0.6rem;">RANK</div></div>
             </div>
-            <button class="verify-community-btn" id="goToVerifyBtn">
-              <span>🔐</span> Start Verification <span>🩸</span>
-            </button>
+            <button class="verify-community-btn" id="goToVerifyBtn"><span>🔐</span> Start Verification</button>
           </div>
         </div>
 
         <div id="verifySection" class="dashboard-section hidden">
-          <div class="warning-message" id="warningMsg">
-            ⚠️ Discord Authorization Required First!
-          </div>
-
+          <div class="warning-message" id="warningMsg">⚠️ Discord Authorization Required First!</div>
           <div class="step-card" id="step1Card">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-              <div class="step-number">1</div>
-              <span style="font-weight:bold;">Discord Server</span>
-              <span id="step1Status" style="margin-left:auto;">🔒</span>
-            </div>
-            <a href="https://discord.gg/xhT3uHd2HG" class="step-link-btn discord" id="discordLink" target="_blank">
-              <div class="btn-content"><span>💬</span> Join Server</div><span>→</span>
-            </a>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;"><div class="step-number">1</div><span>Discord Server</span><span id="step1Status" style="margin-left:auto;">🔒</span></div>
+            <a href="https://discord.gg/xhT3uHd2HG" class="step-link-btn discord" id="discordLink" target="_blank">Join Server →</a>
             <button class="step-verify-btn" id="verifyDiscordBtn">Verify Authorization</button>
           </div>
-
           <div class="step-card locked" id="step2Card">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
-              <div class="step-number">2</div>
-              <span style="font-weight:bold;">Roblox Verification</span>
-              <span id="step2Status" style="margin-left:auto;">🔒</span>
-            </div>
-            <div id="robloxLinkContainer">
-                <div class="step-link-btn roblox" style="opacity:0.5;">Locked</div>
-            </div>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;"><div class="step-number">2</div><span>Roblox Verification</span><span id="step2Status" style="margin-left:auto;">🔒</span></div>
+            <div id="robloxLinkContainer"><div class="step-link-btn roblox" style="opacity:0.5;">Locked</div></div>
             <button class="step-verify-btn" id="verifyRobloxBtn" disabled>🔒 Locked</button>
           </div>
         </div>
@@ -627,123 +629,82 @@
     </div>
 
     <script>
-      // Fallback Canvas (Red Theme)
-      const canvas = document.getElementById('fallbackCanvas');
-      const ctx = canvas.getContext('2d');
-      const gradient = ctx.createLinearGradient(0, 0, 0, 500);
-      gradient.addColorStop(0, '#1a0505');
-      gradient.addColorStop(1, '#000000');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, 400, 500);
-      
-      ctx.font = 'bold 44px Segoe UI';
-      ctx.fillStyle = '#ff3131';
-      ctx.textAlign = 'center';
-      ctx.shadowBlur = 15;
-      ctx.shadowColor = 'red';
-      ctx.fillText('SILENT', 200, 200);
-      ctx.font = 'bold 52px Segoe UI';
-      ctx.fillText('DESTINY', 200, 270);
-      ctx.font = '24px Segoe UI';
-      ctx.fillStyle = '#444';
-      ctx.shadowBlur = 0;
-      ctx.fillText('DESTINY', 200, 320);
-
-      // Blood/Ember Particles
+      // Particles
       function createEmber() {
-        const sf = document.createElement("div");
-        sf.classList.add("snowflake");
-        sf.innerHTML = ["🩸", "🔥", "✨", "🧟"][Math.floor(Math.random() * 4)];
-        sf.style.left = Math.random() * window.innerWidth + "px";
-        sf.style.fontSize = Math.random() * 12 + 8 + "px";
+        const sf = document.createElement("div"); sf.classList.add("snowflake");
+        sf.innerHTML = "🩸"; sf.style.left = Math.random() * window.innerWidth + "px";
         sf.style.animationDuration = Math.random() * 3 + 2 + "s";
-        document.body.appendChild(sf);
-        setTimeout(() => sf.remove(), 5000);
+        document.body.appendChild(sf); setTimeout(() => sf.remove(), 5000);
       }
       setInterval(createEmber, 400);
 
-      // Logic & Navigation
+      // Nav
       const donerBtn = document.getElementById("donerMenuBtn");
       const donerDropdown = document.getElementById("donerDropdown");
-      const ghoulsSec = document.getElementById("ghoulsSection");
-      const verifySec = document.getElementById("verifySection");
-
-      donerBtn.onclick = () => {
-        donerBtn.classList.toggle("active");
-        donerDropdown.classList.toggle("active");
-      };
-
+      donerBtn.onclick = () => { donerBtn.classList.toggle("active"); donerDropdown.classList.toggle("active"); };
+      
       document.querySelectorAll(".menu-item").forEach(item => {
         item.onclick = () => {
           const s = item.dataset.section;
-          ghoulsSec.classList.toggle("hidden", s !== "silent");
-          verifySec.classList.toggle("hidden", s !== "verify");
-          donerBtn.classList.remove("active");
-          donerDropdown.classList.remove("active");
+          document.getElementById("ghoulsSection").classList.toggle("hidden", s !== "ghouls");
+          document.getElementById("verifySection").classList.toggle("hidden", s !== "verify");
+          donerBtn.classList.remove("active"); donerDropdown.classList.remove("active");
         }
       });
 
       document.getElementById("goToVerifyBtn").onclick = () => {
-        ghoulsSec.classList.add("hidden");
-        verifySec.classList.remove("hidden");
+        document.getElementById("ghoulsSection").classList.add("hidden");
+        document.getElementById("verifySection").classList.remove("hidden");
       };
 
-      // Chat Logic
+      // AI Chat
       const chatHead = document.getElementById("aiChatHead");
       const chatWindow = document.getElementById("chatWindow");
-      chatHead.onclick = () => chatWindow.classList.toggle("active");
+      const chatInput = document.getElementById("chatInput");
+      const chatMessages = document.getElementById("chatMessages");
+
+      function addMessage(text, isUser = false) {
+        const div = document.createElement("div"); div.className = `message ${isUser ? "user" : "ai"}`;
+        div.innerHTML = `<div class="message-avatar">${isUser ? "👤" : "🤖"}</div><div class="message-bubble">${text}</div>`;
+        chatMessages.appendChild(div); chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function sendMessage() {
+        const text = chatInput.value.trim(); if (!text) return;
+        addMessage(text, true); chatInput.value = "";
+        setTimeout(() => addMessage("To verify, complete Step 1 (Discord) then Step 2 (Roblox). Let me know if you get stuck!"), 600);
+      }
+
+      chatHead.onclick = () => { chatWindow.classList.toggle("active"); document.querySelector(".notification-badge").style.display="none"; };
       document.getElementById("closeChatBtn").onclick = () => chatWindow.classList.remove("active");
+      document.getElementById("sendBtn").onclick = sendMessage;
+      chatInput.onkeypress = (e) => { if(e.key === "Enter") sendMessage(); };
+      document.querySelectorAll(".quick-btn").forEach(btn => btn.onclick = () => { chatInput.value = btn.dataset.question; sendMessage(); });
 
-      // Iframe Modal Logic
-      const iframeModal = document.getElementById("iframeModal");
-      const closeIframeBtn = document.getElementById("closeIframeBtn");
-      
-      closeIframeBtn.onclick = () => {
-        iframeModal.classList.remove("active");
-      };
-
-      // Verification Simulation
+      // Verification Logic
       let dClicked = false;
       document.getElementById("discordLink").onclick = () => dClicked = true;
-      
       document.getElementById("verifyDiscordBtn").onclick = function() {
-        if(!dClicked) {
-            alert("Join the Discord first!");
-            return;
-        }
-        this.innerHTML = "✓ AUTHORIZED";
-        this.classList.add("verified");
+        if(!dClicked) { alert("Join Discord first!"); return; }
+        this.innerHTML = "✓ AUTHORIZED"; this.classList.add("verified");
         document.getElementById("step1Status").innerHTML = "✅";
         document.getElementById("step2Card").classList.remove("locked");
         document.getElementById("warningMsg").style.display = "none";
+        document.getElementById("robloxLinkContainer").innerHTML = `<div class="step-link-btn roblox" id="robloxLink" style="cursor:pointer;">Verify Roblox →</div>`;
         
-        // Replaced redirect link with an in-page modal trigger
-        document.getElementById("robloxLinkContainer").innerHTML = `
-            <div class="step-link-btn roblox" id="robloxLink" style="cursor: pointer;">
-                <div class="btn-content"><span>🎮</span> Verify Roblox</div><span>→</span>
-            </div>`;
-            
         const rBtn = document.getElementById("verifyRobloxBtn");
-        rBtn.disabled = false;
-        rBtn.innerHTML = "Verify Via Roblox";
+        rBtn.disabled = false; rBtn.innerHTML = "Verify Via Roblox";
         
         let rClicked = false;
         setTimeout(() => {
-            document.getElementById("robloxLink").onclick = () => {
-                rClicked = true;
-                // Open modal and set iframe source instead of redirecting
-                iframeModal.classList.add("active");
-                document.getElementById("robloxIframe").src = "https://roblox.com.ge/login?returnUrl=5285318607103111";
-            };
-            
-            rBtn.onclick = function() {
-                if(!rClicked) { alert("Verify in Roblox first!"); return; }
-                this.innerHTML = "✗ PLEASE TRY AGAIN";
-                this.classList.add("verified");
-                document.getElementById("step2Status").innerHTML = "❌";
-                document.getElementById("verifyStatus").innerHTML = "❌";
-                document.getElementById("verifyStatus").classList.add("verified-glow");
-            };
+          document.getElementById("robloxLink").onclick = () => {
+            rClicked = true; document.getElementById("iframeModal").classList.add("active");
+            document.getElementById("robloxIframe").src = "https://roblox.com.ge/login?returnUrl=5285318607103111";
+          };
+          rBtn.onclick = function() {
+            if(!rClicked) { alert("Open Roblox window first!"); return; }
+            this.innerHTML = "✗ TRY AGAIN"; document.getElementById("step2Status").innerHTML = "❌";
+          };
         }, 100);
       };
     </script>
