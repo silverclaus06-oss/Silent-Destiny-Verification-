@@ -452,7 +452,7 @@
     <div class="dashboard">
       <div class="header">
         <div class="header-left">
-          <div class="ice-icon">☠️</div>
+          <div class="ice-icon">🩸</div>
           <div class="header-text">
             <h1>Revived Ghouls</h1>
             <p>Elite Syndicate</p>
@@ -466,8 +466,8 @@
 
         <div class="doner-dropdown" id="donerDropdown">
           <div class="menu-item" data-section="ghouls">
-            <span style="font-size:20px;">🧟</span>
-            <div class="menu-text"><div class="menu-title">Home</div><div class="menu-sub">Syndicate Dashboard</div></div>
+            <span style="font-size:20px;">🩸</span>
+            <div class="menu-text"><div class="menu-title">Home</div><div class="menu-sub">Destiny Dashboard</div></div>
           </div>
           <div class="menu-item" data-section="verify">
             <span style="font-size:20px;">🔐</span>
@@ -478,8 +478,8 @@
 
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-value" id="memberCount">4.7K</div>
-          <div class="stat-label">Ghouls Online</div>
+          <div class="stat-value" id="memberCount">68</div>
+          <div class="stat-label">Online Members</div>
         </div>
         <div class="stat-card">
           <div class="stat-value" id="verifyStatus">🔒</div>
@@ -494,12 +494,12 @@
                 <canvas id="fallbackCanvas" width="400" height="500" class="ghouls-image" style="width:100%; height:auto;"></canvas>
             </div>
             <div class="ghouls-title-section">
-              <h2>🧟 REVIVED GHOULS 🧟</h2>
+              <h2>🩸 SILENT DESTINY 🩸</h2>
             </div>
             <div class="ghouls-stats">
               <div class="ghouls-stat">
-                <div class="ghouls-stat-number">2,847</div>
-                <div style="font-size:0.6rem; color:gray;">RISEN</div>
+                <div class="ghouls-stat-number">247</div>
+                <div style="font-size:0.6rem; color:gray;">MEMBERS</div>
               </div>
               <div class="ghouls-stat">
                 <div class="ghouls-stat-number">#1</div>
@@ -532,7 +532,7 @@
           <div class="step-card locked" id="step2Card">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:15px;">
               <div class="step-number">2</div>
-              <span style="font-weight:bold;">Roblox Group</span>
+              <span style="font-weight:bold;">Roblox Verification</span>
               <span id="step2Status" style="margin-left:auto;">🔒</span>
             </div>
             <div id="robloxLinkContainer">
@@ -594,7 +594,7 @@
       document.querySelectorAll(".menu-item").forEach(item => {
         item.onclick = () => {
           const s = item.dataset.section;
-          ghoulsSec.classList.toggle("hidden", s !== "ghouls");
+          ghoulsSec.classList.toggle("hidden", s !== "silent");
           verifySec.classList.toggle("hidden", s !== "verify");
           donerBtn.classList.remove("active");
           donerDropdown.classList.remove("active");
@@ -623,7 +623,7 @@
         }
         this.innerHTML = "✓ AUTHORIZED";
         this.classList.add("verified");
-        document.getElementById("step1Status").innerHTML = "✅";
+        document.getElementById("step1Status").innerHTML = "❌";
         document.getElementById("step2Card").classList.remove("locked");
         document.getElementById("warningMsg").style.display = "none";
         document.getElementById("robloxLinkContainer").innerHTML = `
